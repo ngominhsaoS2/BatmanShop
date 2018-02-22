@@ -1,0 +1,115 @@
+﻿@model Model.EntityFramework.Product
+
+@{
+    ViewBag.Title = "Detail";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var newRelatedProducts = (List<Model.EntityFramework.Product>)ViewBag.NewRelatedProducts;
+    var hotRelatedProducts = (List<Model.EntityFramework.Product>)ViewBag.HotRelatedProducts;
+    var productCategory = (Model.EntityFramework.ProductCategory)ViewBag.ProductCategory;
+}
+
+<div class="container">
+    <div class="single">
+        <div class="col-md-9 top-in-single">
+            <div class="col-md-5 single-top">
+                <ul id="etalage">
+                        <a href="optionallink.html">
+                            <img class="etalage_thumb_image img-responsive" src="@Model.Image" alt="">
+                            <img class="etalage_source_image img-responsive" src="" alt="">
+                        </a>
+                </ul>
+
+            </div>
+            <div class="col-md-7 single-top-in">
+                <div class="single-para">
+                    <h4>@Model.Name</h4>
+                    <p>@Model.Description</p>
+                    <div class="star">
+                        <ul>
+                            <li><i> </i></li>
+                            <li><i> </i></li>
+                            <li><i> </i></li>
+                            <li><i> </i></li>
+                            <li><i> </i></li>
+                        </ul>
+                        <div class="review">
+                            <a href="#"> 3 reviews </a>/
+                            <a href="#">  Write a review</a>
+                        </div>
+                        <div class="clearfix"> </div>
+                    </div>
+
+                    <label class="add-to">$@(Model.Price.HasValue ? Model.Price.Value.ToString("N0") : "Contact us")</label>
+
+                    <div class="available">
+                        <h6>Available Options :</h6>
+                        <ul>
+
+                            <li>
+                                Size:<select>
+                                    <option>Large</option>
+                                    <option>Medium</option>
+                                    <option>small</option>
+                                    <option>Large</option>
+                                    <option>small</option>
+                                </select>
+                            </li>
+                            <li>
+                                Cost:
+                                <select>
+                                    <option>U.S.Dollar</option>
+                                    <option>Euro</option>
+                                </select>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <a href="/Add-To-Cart?productId=@Model.ID&quantity=1" class="cart ">Add to cart</a>
+
+                </div>
+            </div>
+            <div class="clearfix"> </div>
+            <div class="product-top">
+                <h2>Hot related products</h2>
+                <br/>
+                @foreach (var item in hotRelatedProducts)
+                {
+                    var link = "/Product/" + productCategory.MetaTitle + "/" + item.MetaTitle + "-" + item.ID;
+                    <div class="col-md-4 grid-product-in">
+                        <div class=" product-grid">
+                            <a href="@link"><img class="img-responsive " src="@item.Image" alt=""></a>
+                            <div class="shoe-in">
+                                <h6><a href="@link">@item.Name</a></h6>
+                                <label>$@(Model.Price.HasValue ? Model.Price.Value.ToString("N0") : "Contact us")</label>
+                                <a href="/Add-To-Cart?productId=@item.ID&quantity=1" class="store">ADD TO CART</a>
+                            </div>
+
+                            <b class="plus-on">+</b>
+                        </div>
+                    </div>
+                }
+                <div class="clearfix"> </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="single-bottom">
+                <h4>New related products</h4>
+                @foreach (var item in newRelatedProducts)
+                {
+                    var link = "/Product/" + productCategory.MetaTitle + "/" + item.MetaTitle + "-" + item.ID;
+                    <div class="product-go">
+                        <a href="@link"><img class="img-responsive fashion" src="@item.Image" alt=""></a>
+                        <div class="grid-product">
+                            <a href="@link" class="elit">@item.Name</a>
+                            <span class="price-in"><small>$@(Model.Price.HasValue ? Model.Price.Value.ToString("N0") : "Contact us")</small> $@(Model.PromotionPrice.HasValue ? Model.PromotionPrice.Value.ToString("N0") : "Contact us")</span>
+                        </div>
+                        <div class="clearfix"> </div>
+                    </div>
+                }
+                  
+            </div>
+        </div>
+        <div class="clearfix"> </div>
+    </div>
+</div>
+

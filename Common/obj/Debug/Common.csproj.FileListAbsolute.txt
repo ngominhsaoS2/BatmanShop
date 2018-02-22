@@ -1,0 +1,4 @@
+E:\WORK\ASP.NET MVC\BatmanShop\Common\bin\Debug\Common.dll
+E:\WORK\ASP.NET MVC\BatmanShop\Common\bin\Debug\Common.pdb
+E:\WORK\ASP.NET MVC\BatmanShop\Common\obj\Debug\Common.dll
+E:\WORK\ASP.NET MVC\BatmanShop\Common\obj\Debug\Common.pdb

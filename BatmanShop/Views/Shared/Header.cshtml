@@ -1,0 +1,113 @@
+﻿@model List<Model.EntityFramework.Menu>
+
+@{ 
+    var productCategory = ViewBag.ProductCategory;
+    var menuType2 = (List<Model.EntityFramework.Menu>)ViewBag.MenuType2;
+    var userSession = (UserLogin)Session[BatmanShop.Common.CommonConstants.USER_SESSION];
+    var cartSession = (List<BatmanShop.Models.CartItem>)Session[BatmanShop.Common.CommonConstants.CartSession];
+    int cartQuantity = 0;
+    if (cartSession != null)
+    {
+        cartQuantity = cartSession.Count();
+    }
+    else
+    {
+        cartQuantity = 0;
+    }
+}
+
+<div class="header">
+    <div class="logo">
+        <a href="/"><img src="/Assets/Client/images/logo.png" alt=""></a>
+    </div>
+    <div class="header-top">
+        <div class="header-grid">
+            <ul class="header-in">
+
+            @if (userSession == null)
+            {
+                foreach (var item in menuType2)
+                {
+                    <li><a href="@item.Link">@item.Text</a></li>
+                }
+            }
+            else
+            {
+                <li><a href="#">Hello @userSession.UserName</a></li>
+                <li>@Html.ActionLink("Logout", "Logout", "User")</li>
+            }
+
+                <li>
+                    <select class="in-drop">
+                        <option value="Dollars" class="in-of">Dollars</option>
+                        <option value="Euro" class="in-of">Euro</option>
+                        <option value="Yen" class="in-of">Yen</option>
+                    </select>
+                </li>
+            </ul>
+            <div class="search-box">
+                <div id="sb-search" class="sb-search">
+                    <form>
+                        <input class="sb-search-input" placeholder="Enter your search term..." type="search" name="search" id="search">
+                        <input class="sb-search-submit" type="submit" value="">
+                        <span class="sb-icon-search"> </span>
+                    </form>
+                </div>
+            </div>
+            <!-- search-scripts -->
+            <script src="/Assets/Client/js/classie.js"></script>
+            <script src="/Assets/Client/js/uisearch.js"></script>
+            <script>
+							new UISearch( document.getElementById( 'sb-search' ) );
+            </script>
+            <!-- //search-scripts -->
+            <div class="online">
+                <a href="/Cart">CART: @cartQuantity items</a>
+            </div>
+            <div class="clearfix"> </div>
+        </div>
+        <div class="header-bottom">
+            <div class="h_menu4">
+                <!-- start h_menu4 -->
+                <a class="toggleMenu" href="#">Menu</a>
+                <ul class="nav">
+                    <li>
+                        <a href="#">Product <i> </i></a>
+                        <ul>
+                        @for (int i = 0; i < 7; i++)
+                        {
+                            var url = "/Product/" + productCategory[i].MetaTitle + "-" + productCategory[i].ID;
+                            <li><a href="@url">@productCategory[i].Name</a></li>
+                        }
+                        </ul>
+                    </li>
+                @foreach (var item in Model)
+                {
+                    <li class="active"><a href="@item.Link">@item.Text</a></li>
+                }
+                    
+                    
+                </ul>
+                <script type="text/javascript" src="/Assets/Client/js/nav.js"></script>
+            </div><!-- end h_menu4 -->
+            <ul class="header-bottom-in">
+                <li>
+                    <select class="drop">
+                        <option value="Dollars" class="in-of">Get Active</option>
+                        <option value="Euro" class="in-of">Get Active1</option>
+                        <option value="Yen" class="in-of">Get Active2</option>
+                    </select>
+                </li>
+                <li>
+                    <select class="drop">
+                        <option value="Dollars" class="in-of">Community</option>
+                        <option value="Euro" class="in-of">Community1</option>
+                        <option value="Yen" class="in-of">Community2</option>
+                    </select>
+                </li>
+            </ul>
+            <div class="clearfix"> </div>
+        </div>
+    </div>
+    <div class="clearfix"> </div>
+</div>
