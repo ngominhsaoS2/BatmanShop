@@ -1292,6 +1292,7 @@
     <Content Include="Assets\Client\css\bootstrap.css" />
     <Content Include="Assets\Client\css\etalage.css" />
     <Content Include="Assets\Client\css\font-awesome.min.css" />
+    <Content Include="Assets\Client\css\jquery-ui.css" />
     <Content Include="Assets\Client\css\owl.carousel.css" />
     <Content Include="Assets\Client\css\style.css" />
     <Content Include="Assets\Client\fonts\fontawesome-webfont.svg" />
@@ -1329,7 +1330,9 @@
     <Content Include="Assets\Client\images\vi.jpg" />
     <Content Include="Assets\Client\images\zoom.png" />
     <Content Include="Assets\Client\js\classie.js" />
+    <Content Include="Assets\Client\js\controller\baseController.js" />
     <Content Include="Assets\Client\js\controller\cartController.js" />
+    <Content Include="Assets\Client\js\jquery-ui.js" />
     <Content Include="Assets\Client\js\jquery.etalage.min.js" />
     <Content Include="Assets\Client\js\jquery.min.js" />
     <Content Include="Assets\Client\js\nav.js" />
@@ -1441,6 +1444,7 @@
     <Content Include="Views\Cart\Success.cshtml" />
     <Content Include="Views\User\Register.cshtml" />
     <Content Include="Views\User\Login.cshtml" />
+    <Content Include="Views\Product\Search.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

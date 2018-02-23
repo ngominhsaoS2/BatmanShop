@@ -10,8 +10,10 @@ License URL: http://creativecommons.org/licenses/by/3.0/
     <title>Sport A Ecommerce Category Flat Bootstarp Resposive Website Template | Home :: w3layouts</title>
     <link href="/Assets/Client/css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
     <link href="/Assets/Client/css/font-awesome.min.css" rel="stylesheet" />
+    <link href="/Assets/Client/css/jquery-ui.css" rel="stylesheet" />
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="/Assets/Client/js/jquery.min.js"></script>
+    <script src="/Assets/Client/js/jquery-ui.js"></script>
     <!-- Custom Theme files -->
     <!--theme-style-->
     <link href="/Assets/Client/css/style.css" rel="stylesheet" type="text/css" media="all" />
@@ -38,7 +40,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     @RenderBody()
     <!--footer-->
     @RenderPage("Footer.cshtml")
-    
+
+    <script src="/Assets/Client/js/controller/baseController.js"></script>
     @RenderSection("jsFooter", required: false)
 </body>
 </html>
