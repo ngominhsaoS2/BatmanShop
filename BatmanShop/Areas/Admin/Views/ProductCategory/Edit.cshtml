@@ -8,6 +8,11 @@
 <h1>Edit product category: @Model.Name</h1>
 </br>
 
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+<br />
+
 @using (Html.BeginForm("Edit", "ProductCategory", FormMethod.Post))
 {
     @Html.AntiForgeryToken()
@@ -111,8 +116,3 @@
         </div>
     </div>
 }
-
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
-

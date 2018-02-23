@@ -36,7 +36,7 @@ namespace BatmanShop.Areas.Admin.Controllers
         {
             if (ModelState.IsValid)
             {
-                //Xử lý MetaTitle
+                //Xử lý MetaTitle, sau đó insert content đã được xử lý vào database
                 if (string.IsNullOrEmpty(content.MetaTitle))
                 {
                     content.MetaTitle = StringHelper.ToUnsignString(content.Name);
@@ -44,6 +44,29 @@ namespace BatmanShop.Areas.Admin.Controllers
 
                 var dao = new ContentDao();
                 long id = dao.Insert(content);
+                
+                //Xử lý bảng Tag, ContentTag
+                if (!string.IsNullOrEmpty(content.Tags))
+                {
+                    string[] tags = content.Tags.Split(',');
+                    foreach (var tag in tags)
+                    {
+                        var tagId = StringHelper.ToUnsignString(tag);
+                        var tagDao = new TagDao();
+                        var contentTagDao = new ContentTagDao();
+                        var existedTag = tagDao.CheckTag(tagId);
+
+                        //insert vào bảng Tag trong database
+                        if (!existedTag)
+                        {
+                            tagDao.Insert(tagId, tag);
+                        }
+
+                        //insert vào bảng ContentTag
+                        contentTagDao.Insert(content.ID, tagId);
+                    }
+                }
+
                 if (id > 0)
                 {
                     SetAlert("Create a new content successfully.", "success");
@@ -74,9 +97,34 @@ namespace BatmanShop.Areas.Admin.Controllers
         {
             if (ModelState.IsValid)
             {
+                //Xử lý MetaTitle, sau đó update content đã được xử lý vào database
                 content.MetaTitle = StringHelper.ToUnsignString(content.Name);
-
                 var result = new ContentDao().Update(content);
+
+                //Xử lý bảng Tag, ContentTag
+                var contentTagDao = new ContentTagDao();
+                contentTagDao.RemoveAllContentTag(content.ID);
+
+                if (!string.IsNullOrEmpty(content.Tags))
+                {
+                    string[] tags = content.Tags.Split(',');
+                    foreach (var tag in tags)
+                    {
+                        var tagId = StringHelper.ToUnsignString(tag);
+                        var tagDao = new TagDao();
+                        var existedTag = tagDao.CheckTag(tagId);
+
+                        //insert vào bảng Tag trong database
+                        if (!existedTag)
+                        {
+                            tagDao.Insert(tagId, tag);
+                        }
+
+                        //insert vào bảng ContentTag
+                        contentTagDao.Insert(content.ID, tagId);
+                    }
+                }
+
                 if (result)
                 {
                     SetAlert("Edit this content successfully.", "success");

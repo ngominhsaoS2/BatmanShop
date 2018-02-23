@@ -1,0 +1,96 @@
+﻿@model List<Model.EntityFramework.Content>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="product-grids">
+    <div class="container">
+        <div class="product-top">
+            @foreach (var item in Model)
+            {
+                var link = "/News/" + item.MetaTitle + "-" + item.ID;
+                <div class="col-md-4 grid-product-in">
+                    <div class="product-grid">
+                        <a href="@link"><img class="img-responsive" src="@item.Image" alt=""></a>
+                        <div class="shoe-in">
+                            <h6><a href="@link">@item.Description</a></h6>
+                            <label>@item.Name</label>
+                        </div>
+                    </div>
+                </div>
+            }
+            <div class="clearfix"> </div>
+
+            <!--Phân trang-->
+            @if (ViewBag.TotalPage > 1)
+            {
+                var pageDisplay = (int)ViewBag.MaxPage;
+                int totalPage = (int)ViewBag.TotalPage;
+                int currentPage = (int)ViewBag.Page;
+
+                //Create numeric links
+                var startPageIndex = 0;
+                var endPageIndex = 0;
+                if (totalPage > pageDisplay)
+                {
+                    startPageIndex = Math.Max(1, currentPage - (pageDisplay / 2));
+                    if (startPageIndex < pageDisplay / 2)
+                    {
+                        endPageIndex = pageDisplay;
+                    }
+                    else
+                    {
+                        endPageIndex = Math.Min(totalPage, currentPage + (pageDisplay / 2));
+                        startPageIndex = endPageIndex - pageDisplay;
+                    }
+
+                }
+                else
+                {
+                    startPageIndex = 1;
+                    endPageIndex = totalPage;
+                }
+
+
+                //var link = "/News/" + productCategory.MetaTitle + "-" + productCategory.ID;
+                <nav>
+                    <ul class="pagination">
+                        @if (currentPage > ViewBag.First)
+                        {
+                            <li><a href="/News?pageIndex=@ViewBag.First" title="First page" class="first"><i class="fa fa-angle-double-left"></i></a></li>
+                            <li>
+                                <a href="/News?pageIndex=@ViewBag.Prev" title="Previous page" class="prev"><i class="fa fa-angle-left"></i></a>
+                            </li>
+
+                        }
+                        @for (int i = startPageIndex; i <= endPageIndex; i++)
+                        {
+                            if (currentPage == i)
+                            {
+                                <li><a href="/News?pageIndex=@i" class="active" title="Page @i">@i</a></li>
+                            }
+                            else
+                            {
+                                <li><a href="/News?pageIndex=@i" title="Page @i" class="pos">@i</a></li>
+                            }
+                        }
+                        @if (currentPage < totalPage)
+                        {
+                            <li><a href="/News?pageIndex=@ViewBag.Next" class="next" title="Next page"><i class="fa fa-angle-right"></i></a></li>
+                            <li> <a href="/News?pageIndex=@ViewBag.Last" class="last" title="Last page"><i class="fa fa-angle-double-right"></i></a></li>
+                        }
+                    </ul>
+                </nav>
+            }
+            else
+            {
+                <span>No records</span>
+            }
+        </div>
+    </div>
+</div>
+
+
+

@@ -171,8 +171,8 @@
 		type.DeniedExtensions = new string[] { };
 
 		type = ResourceType.Add( "Images" );
-		type.Url = BaseUrl + "/Assets/Client/images/";
-		type.Dir = BaseDir == "" ? "" : BaseDir + "/Assets/Client/images/";
+		type.Url = BaseUrl + "images/";
+		type.Dir = BaseDir == "" ? "" : BaseDir + "images/";
 		type.MaxSize = 0;
 		type.AllowedExtensions = new string[] { "bmp", "gif", "jpeg", "jpg", "png" };
 		type.DeniedExtensions = new string[] { };

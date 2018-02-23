@@ -8,6 +8,11 @@
 <h1>Create new product category</h1>
 </br>
 
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+<br />
+
 @using (Html.BeginForm("Create", "ProductCategory", FormMethod.Post)) 
 {
     @Html.AntiForgeryToken()
@@ -111,7 +116,3 @@
         </div>
     </div>
 }
-
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>

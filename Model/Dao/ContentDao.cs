@@ -110,7 +110,20 @@ namespace Model.Dao
             return model.OrderByDescending(x => x.CreatedDate).ToPagedList(page, pageSize);
         }
 
-
+        /// <summary>
+        /// List all Contents
+        /// </summary>
+        /// <param name="productCategoryID"></param>
+        /// <param name="totalRecord"></param>
+        /// <param name="pageIndex"></param>
+        /// <param name="pageSize"></param>
+        /// <returns></returns>
+        public List<Content> ListAll(ref int totalRecord, int pageIndex = 1, int pageSize = 9)
+        {
+            totalRecord = db.Contents.Count();
+            var model = db.Contents.OrderByDescending(x => x.CreatedDate).Skip((pageIndex - 1) * pageSize).Take(pageSize);
+            return model.ToList();
+        }
 
 
 
