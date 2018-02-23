@@ -1,4 +1,5 @@
-﻿using Model.Dao;
+﻿using BatmantShop.Common;
+using Model.Dao;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -41,8 +42,15 @@ namespace BatmanShop.Controllers
         public ActionResult Detail(long id)
         {
             var content = new ContentDao().GetByID(id);
+            //Lấy các Tags của content
             ViewBag.Tags = new ContentDao().ListTag(id);
-            
+            //Lấy Tag đầu tiên của content
+            string[] tags = content.Tags.Split(',');
+            string firstTag = StringHelper.ToUnsignString(tags[0]);
+            //Lấy các tin liên quan của Tag đầu tiên vừa tìm
+            int top = 5;
+            int totalRecord = 0;
+            ViewBag.RelatedContent = new ContentDao().ListAllByTag(firstTag, ref totalRecord, 1, top);
             return View(content);
         }
 

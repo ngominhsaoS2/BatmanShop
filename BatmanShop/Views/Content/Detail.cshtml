@@ -3,6 +3,7 @@
 @{
     ViewBag.Title = "Detail";
     Layout = "~/Views/Shared/_Layout.cshtml";
+    var relatedContent = (List<Model.EntityFramework.Content>)ViewBag.RelatedContent;
 }
 
 <div class="container">
@@ -19,9 +20,30 @@
                     <label><a href="/Tag/@tag.ID">@tag.Name </a></label>
                 }
             }
-            </h4>
-                
+            </h4>    
         </div>
+
+        <div class="col-md-4">
+            <div class="single-bottom">
+                <h4>Related News</h4>
+                @if (relatedContent.Count() > 0)
+                {
+                    foreach (var item in relatedContent)
+                    {
+                        var link = "/News/" + item.MetaTitle + "-" + item.ID;
+                        <div class="product-go">
+                            <img class="img-responsive fashion" src="@item.Image" alt="">
+                            <div class="grid-product">
+                                <a href="@link" class="elit">@item.Name</a>
+                                <span class="price-in">@item.Description</span>
+                            </div>
+                            <div class="clearfix"> </div>
+                        </div>
+                    }
+                }    
+            </div>
+        </div>
+
         <div class="clearfix"> </div>
     </div>
 </div>
