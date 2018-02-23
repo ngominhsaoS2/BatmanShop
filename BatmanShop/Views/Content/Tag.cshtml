@@ -3,6 +3,7 @@
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
+    var tagId = ViewBag.TagId;
 }
 
 <div class="product-grids">
@@ -55,15 +56,13 @@
                     endPageIndex = totalPage;
                 }
 
-
-                //var link = "/News/" + productCategory.MetaTitle + "-" + productCategory.ID;
                 <nav>
                     <ul class="pagination">
                         @if (currentPage > ViewBag.First)
                         {
-                            <li><a href="/News?pageIndex=@ViewBag.First" title="First page" class="first"><i class="fa fa-angle-double-left"></i></a></li>
+                            <li><a href="/Tag/@tagId?pageIndex=@ViewBag.First" title="First page" class="first"><i class="fa fa-angle-double-left"></i></a></li>
                             <li>
-                                <a href="/News?pageIndex=@ViewBag.Prev" title="Previous page" class="prev"><i class="fa fa-angle-left"></i></a>
+                                <a href="/Tag/@tagId?pageIndex=@ViewBag.Prev" title="Previous page" class="prev"><i class="fa fa-angle-left"></i></a>
                             </li>
 
                         }
@@ -71,17 +70,17 @@
                         {
                             if (currentPage == i)
                             {
-                                <li><a href="/News?pageIndex=@i" class="active" title="Page @i">@i</a></li>
+                                <li><a href="/Tag/@tagId?pageIndex=@i" class="active" title="Page @i">@i</a></li>
                             }
                             else
                             {
-                                <li><a href="/News?pageIndex=@i" title="Page @i" class="pos">@i</a></li>
+                                <li><a href="/Tag/@tagId?pageIndex=@i" title="Page @i" class="pos">@i</a></li>
                             }
                         }
                         @if (currentPage < totalPage)
                         {
-                            <li><a href="/News?pageIndex=@ViewBag.Next" class="next" title="Next page"><i class="fa fa-angle-right"></i></a></li>
-                            <li> <a href="/News?pageIndex=@ViewBag.Last" class="last" title="Last page"><i class="fa fa-angle-double-right"></i></a></li>
+                            <li><a href="/Tag/@tagId?pageIndex=@ViewBag.Next" class="next" title="Next page"><i class="fa fa-angle-right"></i></a></li>
+                            <li><a href="/Tag/@tagId?pageIndex=@ViewBag.Last" class="last" title="Last page"><i class="fa fa-angle-double-right"></i></a></li>
                         }
                     </ul>
                 </nav>
@@ -91,6 +90,7 @@
         {
             <span>No records</span>
         }
+
         </div>
     </div>
 </div>

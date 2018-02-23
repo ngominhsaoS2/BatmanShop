@@ -1,0 +1,27 @@
+﻿@model Model.EntityFramework.Content
+
+@{
+    ViewBag.Title = "Detail";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container">
+    <div class="contact">
+        <div class="col-md-8 contact-grid">
+            <h2>@Model.Name</h2>      
+            @Html.Raw(Model.Detail)
+            <br/>
+            <h4> Tags:
+            @{
+                var tags = (List<Model.EntityFramework.Tag>)ViewBag.Tags;
+                foreach (var tag in tags)
+                {
+                    <label><a href="/Tag/@tag.ID">@tag.Name </a></label>
+                }
+            }
+            </h4>
+                
+        </div>
+        <div class="clearfix"> </div>
+    </div>
+</div>

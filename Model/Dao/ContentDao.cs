@@ -125,6 +125,78 @@ namespace Model.Dao
             return model.ToList();
         }
 
+        /// <summary>
+        /// List all Contents belong to the TagID
+        /// </summary>
+        /// <param name="totalRecord"></param>
+        /// <param name="pageIndex"></param>
+        /// <param name="pageSize"></param>
+        /// <returns></returns>
+        public List<Content> ListAllByTag(string tagId, ref int totalRecord, int pageIndex = 1, int pageSize = 9)
+        {
+            var model = (from a in db.Contents
+                         join b in db.ContentTags
+                         on a.ID equals b.ContentID
+                         where b.TagID == tagId
+                         select new
+                         {
+                             Name = a.Name,
+                             MetaTitle = a.MetaTitle,
+                             Image = a.Image,
+                             Description = a.Description,
+                             CreatedDate = a.CreatedDate,
+                             CreatedBy = a.CreatedBy,
+                             ID = a.ID
+
+                         }).AsEnumerable().Select(x => new Content()
+                         {
+                             Name = x.Name,
+                             MetaTitle = x.MetaTitle,
+                             Image = x.Image,
+                             Description = x.Description,
+                             CreatedDate = x.CreatedDate,
+                             CreatedBy = x.CreatedBy,
+                             ID = x.ID
+                         });
+            totalRecord = model.Count();
+            model = model.OrderByDescending(x => x.CreatedDate).Skip((pageIndex - 1) * pageSize).Take(pageSize);
+            return model.ToList();
+        }
+
+        /// <summary>
+        /// Get tag list of the content
+        /// </summary>
+        /// <param name="contentId"></param>
+        /// <returns></returns>
+        public List<Tag> ListTag(long contentId)
+        {
+            var model = (from a in db.Tags
+                         join b in db.ContentTags
+                         on a.ID equals b.TagID
+                         where b.ContentID == contentId
+                         select new
+                         {
+                             ID = b.TagID,
+                             Name = a.Name
+                         }).AsEnumerable().Select(x => new Tag()
+                         {
+                             ID = x.ID,
+                             Name = x.Name
+                         });
+            return model.ToList();
+        }
+
+        /// <summary>
+        /// Get Tag when having TagId
+        /// </summary>
+        /// <param name="tagId"></param>
+        /// <returns></returns>
+        public Tag GetTag(string tagId)
+        {
+            return db.Tags.Find(tagId);
+        }
+
+
 
 
     }

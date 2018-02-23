@@ -94,6 +94,20 @@ namespace BatmanShop
             );
 
             routes.MapRoute(
+                name: "News detail",
+                url: "News/{MetaTitle}-{id}",
+                defaults: new { controller = "Content", action = "Detail", id = UrlParameter.Optional },
+                namespaces: new[] { "BatmanShop.Controllers" }
+            );
+
+            routes.MapRoute(
+                name: "Tag",
+                url: "Tag/{tagId}",
+                defaults: new { controller = "Content", action = "Tag", id = UrlParameter.Optional },
+                namespaces: new[] { "BatmanShop.Controllers" }
+            );
+
+            routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional },
