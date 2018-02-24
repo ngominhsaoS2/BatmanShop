@@ -230,6 +230,7 @@
     <Compile Include="Common\StringHelper.cs" />
     <Compile Include="Common\UserLogin.cs" />
     <Compile Include="Controllers\CartController.cs" />
+    <Compile Include="Controllers\ContactController.cs" />
     <Compile Include="Controllers\ContentController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
@@ -1340,6 +1341,7 @@
     <Content Include="Assets\Client\js\classie.js" />
     <Content Include="Assets\Client\js\controller\baseController.js" />
     <Content Include="Assets\Client\js\controller\cartController.js" />
+    <Content Include="Assets\Client\js\controller\contactController.js" />
     <Content Include="Assets\Client\js\jquery-ui.js" />
     <Content Include="Assets\Client\js\jquery.etalage.min.js" />
     <Content Include="Assets\Client\js\jquery.min.js" />
@@ -1457,6 +1459,7 @@
     <Content Include="Views\Content\Detail.cshtml" />
     <Content Include="Views\Content\Tag.cshtml" />
     <Content Include="Views\Home\Index1.cshtml" />
+    <Content Include="Views\Contact\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
