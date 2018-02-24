@@ -1,7 +1,7 @@
 ﻿@model List<Model.EntityFramework.Menu>
 
 @{ 
-    var productCategory = ViewBag.ProductCategory;
+    var productCategory = (List<Model.EntityFramework.ProductCategory>)ViewBag.ProductCategory;
     var menuType2 = (List<Model.EntityFramework.Menu>)ViewBag.MenuType2;
     var userSession = (UserLogin)Session[BatmanShop.Common.CommonConstants.USER_SESSION];
     var cartSession = (List<BatmanShop.Models.CartItem>)Session[BatmanShop.Common.CommonConstants.CartSession];
@@ -74,10 +74,10 @@
                     <li>
                         <a href="#">Product <i> </i></a>
                         <ul>
-                        @for (int i = 0; i < 7; i++)
+                        @foreach (var item in productCategory)
                         {
-                            var url = "/Product/" + productCategory[i].MetaTitle + "-" + productCategory[i].ID;
-                            <li><a href="@url">@productCategory[i].Name</a></li>
+                            var url = "/Product/" + item.MetaTitle + "-" + item.ID;
+                            <li><a href="@url">@item.Name</a></li>
                         }
                         </ul>
                     </li>

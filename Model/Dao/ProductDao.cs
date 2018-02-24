@@ -155,7 +155,7 @@ namespace Model.Dao
         }
 
         /// <summary>
-        /// Get related products when having productId
+        /// Get new related products when having productId
         /// </summary>
         /// <param name="productId"></param>
         /// <returns></returns>
@@ -163,6 +163,40 @@ namespace Model.Dao
         {
             var product = db.Products.Find(productId);
             return db.Products.Where(x => x.ID != product.ID && x.ProductCategoryID == product.ProductCategoryID).OrderByDescending(x => x.CreatedDate).Take(top).ToList();
+        }
+
+        /// <summary>
+        /// Get top new Products
+        /// </summary>
+        /// <param name="productId"></param>
+        /// <returns></returns>
+        public List<ProductViewModel> ListTopNewProduct(int top)
+        {
+            var model = (from a in db.Products
+                         join b in db.ProductCategories
+                         on a.ProductCategoryID equals b.ID
+                         select new
+                         {
+                             CategoryMetaTitle = b.MetaTitle,
+                             CategoryName = b.Name,
+                             CreatedDate = a.CreatedDate,
+                             ID = a.ID,
+                             Image = a.Image,
+                             Name = a.Name,
+                             MetaTitle = a.MetaTitle,
+                             Price = a.Price
+                         }).AsEnumerable().Select(x => new ProductViewModel()
+                         {
+                             CategoryMetaTitle = x.MetaTitle,
+                             CategoryName = x.Name,
+                             CreatedDate = x.CreatedDate,
+                             ID = x.ID,
+                             Image = x.Image,
+                             Name = x.Name,
+                             MetaTitle = x.MetaTitle,
+                             Price = x.Price
+                         });
+            return model.OrderByDescending(x => x.CreatedDate).Take(top).ToList();
         }
 
         /// <summary>
@@ -176,7 +210,7 @@ namespace Model.Dao
         }
 
         /// <summary>
-        /// Get feature products
+        /// Get hot related products when having productId
         /// </summary>
         /// <param name="top"></param>
         /// <returns></returns>

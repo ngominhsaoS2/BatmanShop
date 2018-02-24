@@ -27,9 +27,17 @@ namespace Model.Dao
             return db.ProductCategories.Find(id);
         }
 
-        public List<ProductCategory> ListAll()
+        public List<ProductCategory> ListAll(int? top = null)
         {
-            return db.ProductCategories.Where(x => x.Status == true).ToList();
+            if(top != null)
+            {
+                return db.ProductCategories.Where(x => x.Status == true).OrderByDescending(x => x.CreatedDate).Take((int)top).ToList();
+            }
+            else
+            {
+                return db.ProductCategories.Where(x => x.Status == true).ToList();
+            }
+            
         }
 
         /// <summary>

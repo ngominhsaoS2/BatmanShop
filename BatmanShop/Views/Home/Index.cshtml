@@ -2,6 +2,9 @@
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
+    var productCategory = (List<Model.EntityFramework.ProductCategory>)ViewBag.ProductCategory;
+    var topNewProducts = (List<Model.ViewModel.ProductViewModel>)ViewBag.TopNewProducts;
+    var topNewContents = (List<Model.EntityFramework.Content>)ViewBag.TopNewContents;
 }
 
 @section banner{
@@ -43,105 +46,32 @@
         </div>
         <div id="example1">
             <div id="owl-demo" class="owl-carousel text-center">
+            @foreach (var item in productCategory)
+            {
+                var url = "/Product/" + item.MetaTitle + "-" + item.ID;
                 <div class="item">
-                    <a href="single.html" title="image" rel="title1">
-                        <img class="img-responsive " src="/Assets/Client/images/pic.jpg" alt="">
+                    <a href="@url" title="image" rel="title1">
+                        <img class="img-responsive " src="@item.Image" alt="">
                         <div class="run">
-                            <i> </i>
-                            <p>RUNNING</p>
+                            <i class="@item.Class"></i>
+                            <p>@item.Name</p>
                         </div>
                     </a>
                 </div>
+            }  
+            @foreach (var item in productCategory)
+            {
+                var url = "/Product/" + item.MetaTitle + "-" + item.ID;
                 <div class="item">
-                    <a href="single.html" title="image" rel="title1">
-                        <img class="img-responsive " src="/Assets/Client/images/pic1.jpg" alt="">
+                    <a href="@url" title="image" rel="title1">
+                        <img class="img-responsive " src="@item.Image" alt="">
                         <div class="run">
-                            <i class="foot-in"> </i>
-                            <p>FOOTBALL</p>
+                            <i class="@item.Class"></i>
+                            <p>@item.Name</p>
                         </div>
                     </a>
                 </div>
-                <div class="item">
-                    <a href="single.html" title="image" rel="title1">
-                        <img class="img-responsive " src="/Assets/Client/images/pic2.jpg" alt="">
-                        <div class="run">
-                            <i class="cycling"> </i>
-                            <p>CYCLING</p>
-                        </div>
-                    </a>
-                </div>
-                <div class="item">
-                    <a href="single.html" title="image" rel="title1">
-                        <img class="img-responsive " src="/Assets/Client/images/pic3.jpg" alt="">
-                        <div class="run">
-                            <i class="fitness"> </i>
-                            <p>FITNESS</p>
-                        </div>
-                    </a>
-                </div>
-                <div class="item">
-                    <a href="single.html" title="image" rel="title1">
-                        <img class="img-responsive " src="/Assets/Client/images/pic4.jpg" alt="">
-                        <div class="run">
-                            <i class="tennis"> </i>
-                            <p>TENNIS</p>
-                        </div>
-                    </a>
-                </div>
-                <div class="item">
-                    <a href="single.html" title="image" rel="title1">
-                        <img class="img-responsive " src="/Assets/Client/images/pic.jpg" alt="">
-                        <div class="run">
-                            <i> </i>
-                            <p>RUNNING</p>
-                        </div>
-                    </a>
-                </div>
-                <div class="item">
-                    <a href="single.html" title="image" rel="title1">
-                        <img class="img-responsive " src="/Assets/Client/images/pic1.jpg" alt="">
-                        <div class="run">
-                            <i class="foot-in"> </i>
-                            <p>FOOTBALL</p>
-                        </div>
-                    </a>
-                </div>
-                <div class="item">
-                    <a href="single.html" title="image" rel="title1">
-                        <img class="img-responsive " src="/Assets/Client/images/pic2.jpg" alt="">
-                        <div class="run">
-                            <i class="cycling"> </i>
-                            <p>CYCLING</p>
-                        </div>
-                    </a>
-                </div>
-                <div class="item">
-                    <a href="single.html" title="image" rel="title1">
-                        <img class="img-responsive " src="/Assets/Client/images/pic3.jpg" alt="">
-                        <div class="run">
-                            <i class="fitness"> </i>
-                            <p>FITNESS</p>
-                        </div>
-                    </a>
-                </div>
-                <div class="item">
-                    <a href="single.html" title="image" rel="title1">
-                        <img class="img-responsive " src="/Assets/Client/images/pic4.jpg" alt="">
-                        <div class="run">
-                            <i class="tennis"> </i>
-                            <p>TENNIS</p>
-                        </div>
-                    </a>
-                </div>
-                <div class="item">
-                    <a href="single.html" title="image" rel="title1">
-                        <img class="img-responsive " src="/Assets/Client/images/pic.jpg" alt="">
-                        <div class="run">
-                            <i> </i>
-                            <p>RUNNING</p>
-                        </div>
-                    </a>
-                </div>
+            }
             </div>
         </div>
         <h6 class="your-in">Your sport</h6>
@@ -151,56 +81,33 @@
     </div>
     <!--//sreen-gallery-cursual---->
     <div class="content-grids">
-
+    @foreach (var item in topNewProducts)
+    {
+        var link = "/Product/" + item.CategoryMetaTitle + "/" + item.MetaTitle + "-" + item.ID;
         <div class="col-md-4 content-grid">
-            <a href="single.html" class="lot"><img class="img-responsive " src="/Assets/Client/images/sh.png" alt=""></a>
+            <a href="@link" class="lot"><img class="img-responsive " src="@item.Image" alt=""></a>
             <div class="shoe">
                 <p>
-                    Nike 3.0 V4 Men Grey Royal
-                    Blue with White
+                    @item.Name
                 </p>
-                <label>$67.99</label>
-                <a href="single.html">find a store</a>
+                <label>$@(item.Price.HasValue ? item.Price.Value.ToString("N0") : "Contact us")</label>
+                <a href="/Add-To-Cart?productId=@item.ID&quantity=1">ADD TO CART</a>
             </div>
             <div class="clearfix"> </div>
-            <b class="plus-in">+</b>
         </div>
-        <div class="col-md-4 content-grid">
-            <a href="single.html" class="lot"><img class="img-responsive " src="/Assets/Client/images/sh1.png" alt=""></a>
-            <div class="shoe">
-                <p>Nike 3.0 V4 Men Grey RoyalBlue with White</p>
-                <label>$67.99</label>
-                <a href="single.html">find a store</a>
-            </div>
-            <div class="clearfix"> </div>
-            <b class="plus-in">+</b>
-        </div>
-        <div class="col-md-4 content-grid">
-            <a href="single.html" class="lot"><img class="img-responsive " src="/Assets/Client/images/sh2.png" alt=""></a>
-            <div class="shoe">
-                <p>Nike 3.0 V4 Men Grey RoyalBlue with White</p>
-                <label>$67.99</label>
-                <a href="single.html">find a store</a>
-            </div>
-
-            <div class="clearfix"> </div>
-            <b class="plus-in">+</b>
-        </div>
-
+    }
         <div class="clearfix"> </div>
     </div>
     <!---->
     <div class="content-top">
+    @foreach (var item in topNewContents)
+    {
+        var link = "/News/" + item.MetaTitle + "-" + item.ID;
         <div class="col-md-4 top-content">
-            <a href="single.html"><img class="img-responsive " src="/Assets/Client/images/pi.jpg" alt=""></a>
+            <a href="@link"><img class="img-responsive " src="@item.Image" alt=""></a>
         </div>
-        <div class="col-md-4 top-content">
-            <a href="single.html"><img class="img-responsive " src="/Assets/Client/images/pi1.jpg" alt=""></a>
-        </div>
-        <div class="col-md-4 top-content">
-            <a href="single.html"><img class="img-responsive " src="/Assets/Client/images/pi2.jpg" alt=""></a>
-        </div>
-
+    }
+        
         <div class="clearfix"> </div>
     </div>
     <div class="content-bottom">
@@ -221,16 +128,16 @@
                 <div class="callbacks_container">
                     <ul class="rslides" id="slider">
                         <li>
-                            <img src="/Assets/Client/images/vi.jpg" alt="">
-
+                            <img src="/Assets/Client/images/0022.jpg" alt="">
                         </li>
                         <li>
-                            <img src="/Assets/Client/images/v2.jpg" alt="">
-
+                            <img src="/Assets/Client/images/0030.jpg" alt="">
                         </li>
                         <li>
-                            <img src="/Assets/Client/images/vi.jpg" alt="">
-
+                            <img src="/Assets/Client/images/0022.jpg" alt="">
+                        </li>
+                        <li>
+                            <img src="/Assets/Client/images/0030.jpg" alt="">
                         </li>
                     </ul>
                 </div>

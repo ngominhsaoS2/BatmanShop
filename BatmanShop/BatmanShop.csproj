@@ -1297,6 +1297,8 @@
     <Content Include="Assets\Client\css\owl.carousel.css" />
     <Content Include="Assets\Client\css\style.css" />
     <Content Include="Assets\Client\fonts\fontawesome-webfont.svg" />
+    <Content Include="Assets\Client\images\0022.jpg" />
+    <Content Include="Assets\Client\images\0030.jpg" />
     <Content Include="Assets\Client\images\11.png" />
     <Content Include="Assets\Client\images\ac.png" />
     <Content Include="Assets\Client\images\arrow.png" />
@@ -1327,6 +1329,11 @@
     <Content Include="Assets\Client\images\si1.jpg" />
     <Content Include="Assets\Client\images\si2.jpg" />
     <Content Include="Assets\Client\images\si3.jpg" />
+    <Content Include="Assets\Client\images\TG071.jpg" />
+    <Content Include="Assets\Client\images\TG072.jpg" />
+    <Content Include="Assets\Client\images\TG073.jpg" />
+    <Content Include="Assets\Client\images\TG074.jpg" />
+    <Content Include="Assets\Client\images\TG075.jpg" />
     <Content Include="Assets\Client\images\v2.jpg" />
     <Content Include="Assets\Client\images\vi.jpg" />
     <Content Include="Assets\Client\images\zoom.png" />
@@ -1449,6 +1456,7 @@
     <Content Include="Views\Content\Index.cshtml" />
     <Content Include="Views\Content\Detail.cshtml" />
     <Content Include="Views\Content\Tag.cshtml" />
+    <Content Include="Views\Home\Index1.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

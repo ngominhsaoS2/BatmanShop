@@ -8,15 +8,50 @@
     var productCategory = (Model.EntityFramework.ProductCategory)ViewBag.ProductCategory;
 }
 
+@section jsHeader{
+    <link rel="stylesheet" href="/Assets/Client/css/etalage.css">
+    <script src="/Assets/Client/js/jquery.etalage.min.js"></script>
+    <script>
+			    jQuery(document).ready(function($){
+
+				    $('#etalage').etalage({
+					    thumb_image_width: 320,
+					    thumb_image_height: 240,
+					    source_image_width: 1200,
+					    source_image_height: 900,
+					    show_hint: true,
+					    click_callback: function(image_anchor, instance_id){
+						    alert('Callback example:\nYou clicked on an image with the anchor: "'+image_anchor+'"\n(in Etalage instance: "'+instance_id+'")');
+					    }
+				    });
+
+			    });
+    </script>    
+}
+
 <div class="container">
     <div class="single">
         <div class="col-md-9 top-in-single">
             <div class="col-md-5 single-top">
                 <ul id="etalage">
+                    <li>
                         <a href="optionallink.html">
                             <img class="etalage_thumb_image img-responsive" src="@Model.Image" alt="">
-                            <img class="etalage_source_image img-responsive" src="" alt="">
+                            <img class="etalage_source_image img-responsive" src="@Model.Image" alt="">
                         </a>
+                    </li>
+                    <li>
+                        <img class="etalage_thumb_image img-responsive" src="@Model.Image" alt="">
+                        <img class="etalage_source_image img-responsive" src="@Model.Image" alt="">    
+                    </li>
+                    <li>
+                        <img class="etalage_thumb_image img-responsive" src="@Model.Image" alt="">
+                        <img class="etalage_source_image img-responsive" src="@Model.Image" alt="">
+                    </li>
+                    <li>
+                        <img class="etalage_thumb_image img-responsive" src="@Model.Image" alt="">
+                        <img class="etalage_source_image img-responsive" src="@Model.Image" alt="">
+                    </li> 
                 </ul>
 
             </div>
@@ -83,8 +118,6 @@
                                 <label>$@(Model.Price.HasValue ? Model.Price.Value.ToString("N0") : "Contact us")</label>
                                 <a href="/Add-To-Cart?productId=@item.ID&quantity=1" class="store">ADD TO CART</a>
                             </div>
-
-                            <b class="plus-on">+</b>
                         </div>
                     </div>
                 }

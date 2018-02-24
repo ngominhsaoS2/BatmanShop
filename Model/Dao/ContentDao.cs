@@ -196,7 +196,15 @@ namespace Model.Dao
             return db.Tags.Find(tagId);
         }
 
-
+        /// <summary>
+        /// Get top new Contents
+        /// </summary>
+        /// <param name="top"></param>
+        /// <returns></returns>
+        public List<Content> ListTopNewContent(int top)
+        {
+            return db.Contents.OrderByDescending(x => x.CreatedDate).Take(top).ToList();
+        }
 
 
     }

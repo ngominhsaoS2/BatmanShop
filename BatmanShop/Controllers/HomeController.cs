@@ -12,6 +12,9 @@ namespace BatmanShop.Controllers
         // GET: Home
         public ActionResult Index()
         {
+            ViewBag.ProductCategory = new ProductCategoryDao().ListAll();
+            ViewBag.TopNewProducts = new ProductDao().ListTopNewProduct(3);
+            ViewBag.TopNewContents = new ContentDao().ListTopNewContent(3);
             return View();
         }
 
@@ -24,7 +27,16 @@ namespace BatmanShop.Controllers
             return PartialView(model);
         }
 
+        [ChildActionOnly]
+        public ActionResult Footer()
+        {
+            ViewBag.ProductCategory = new ProductCategoryDao().ListAll(10);
+            return PartialView();
+        }
 
+        
+
+        
 
 
 

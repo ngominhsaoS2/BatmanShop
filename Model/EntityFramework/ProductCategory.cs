@@ -23,6 +23,12 @@ namespace Model.EntityFramework
         [Required(ErrorMessage = "Please enter DisplayOrder")]
         public int? DisplayOrder { get; set; }
 
+        [StringLength(500)]
+        public string Image { get; set; }
+
+        [StringLength(50)]
+        public string Class { get; set; }
+
         [StringLength(250)]
         public string SeoTitle { get; set; }
 
