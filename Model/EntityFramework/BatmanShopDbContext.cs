@@ -33,6 +33,7 @@ namespace Model.EntityFramework
         public virtual DbSet<UserGroup> UserGroups { get; set; }
         public virtual DbSet<Menu> Menus { get; set; }
         public virtual DbSet<Role> Roles { get; set; }
+        public virtual DbSet<Banner> Banners { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

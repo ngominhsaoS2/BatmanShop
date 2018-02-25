@@ -5,11 +5,12 @@
     var topNewProducts = (List<Model.ViewModel.ProductViewModel>)ViewBag.TopNewProducts;
     var topNewContents = (List<Model.EntityFramework.Content>)ViewBag.TopNewContents;
     var topNewSlides = (List<Model.EntityFramework.Slide>)ViewBag.TopNewSlides;
+    var newestBanner = (Model.EntityFramework.Banner)ViewBag.NewestBanner;
 }
 
 
 @section banner{
-    <div class="banner" style="background: url(/Assets/Client/images/TG073.jpg) no-repeat center;
+    <div class="banner" style="background: url(@newestBanner.Image) no-repeat center;
                                 width: 100%;
 	                            min-height: 600px;
 	                            display: block;
