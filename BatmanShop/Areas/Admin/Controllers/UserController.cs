@@ -13,6 +13,7 @@ namespace BatmanShop.Areas.Admin.Controllers
     {
         ////Display, create, edit, delete User
         //Index page of User management
+        [HasPermission(RoleID = "VIEW_USER")]
         public ActionResult Index(string searchString, int page = 1, int pageSize = 10)
         {
             var dao = new UserDao();

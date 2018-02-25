@@ -211,6 +211,33 @@ namespace Model.Dao
 
         }
 
+        /// <summary>
+        /// Get list Permission one User has
+        /// </summary>
+        /// <param name="userName"></param>
+        /// <returns></returns>
+        public List<string> GetListPermission(string userName)
+        {
+            var user = db.Users.Single(x => x.UserName == userName);
+            var data = (from a in db.Permissions
+                        join b in db.UserGroups on a.UserGroupID equals b.ID
+                        join c in db.Roles on a.RoleID equals c.ID
+                        where b.ID == user.GroupID
+                        select new
+                        {
+                            RoleID = a.RoleID,
+                            UserGroupID = a.UserGroupID
+                        }).AsEnumerable().Select(x => new Permission()
+                        {
+                            RoleID = x.RoleID,
+                            UserGroupID = x.UserGroupID
+                        });
+
+            return data.Select(x => x.RoleID).ToList();
+
+
+        }
+
 
 
 

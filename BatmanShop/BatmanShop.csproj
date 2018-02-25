@@ -227,6 +227,7 @@
     <Compile Include="Areas\Admin\Models\LoginModel.cs" />
     <Compile Include="Common\CommonConstants.cs" />
     <Compile Include="Common\Encryptor.cs" />
+    <Compile Include="Common\HasPermissionAttribute.cs" />
     <Compile Include="Common\StringHelper.cs" />
     <Compile Include="Common\UserLogin.cs" />
     <Compile Include="Controllers\CartController.cs" />
@@ -1421,6 +1422,7 @@
     <Content Include="Assets\Client\fonts\fontawesome-webfont.woff" />
     <Content Include="Assets\Client\fonts\fontawesome-webfont.woff2" />
     <Content Include="Assets\Client\fonts\FontAwesome.otf" />
+    <Content Include="Areas\Admin\Views\Shared\_401.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />

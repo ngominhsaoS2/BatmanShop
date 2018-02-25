@@ -9,7 +9,7 @@ namespace BatmanShop.Common
     {
         public static string USER_SESSION = "USER_SESSION";
         public static string CartSession = "CartSession";
-        public static string SESSION_CREDENTIALS = "SESSION_CREDENTIALS";
+        public static string SESSION_PERMISSIONS = "SESSION_PERMISSIONS";
         public static string CurrentCulture { set; get; }
     }
 }

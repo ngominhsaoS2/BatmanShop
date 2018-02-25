@@ -15,5 +15,25 @@ namespace BatmanShop.Areas.Admin.Controllers
         {
             return View();
         }
+
+        public ActionResult Logout()
+        {
+            Session[BatmanShop.Common.CommonConstants.USER_SESSION] = null;
+            return Redirect("/Admin/Login");
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     }
 }

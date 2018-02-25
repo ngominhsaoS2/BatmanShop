@@ -7,6 +7,7 @@ namespace Model.EntityFramework
     using System.Data.Entity.Spatial;
 
     [Table("Permission")]
+    [Serializable]
     public partial class Permission
     {
         [Key]

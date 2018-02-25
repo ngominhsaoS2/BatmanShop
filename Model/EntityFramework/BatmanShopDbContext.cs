@@ -32,6 +32,7 @@ namespace Model.EntityFramework
         public virtual DbSet<User> Users { get; set; }
         public virtual DbSet<UserGroup> UserGroups { get; set; }
         public virtual DbSet<Menu> Menus { get; set; }
+        public virtual DbSet<Role> Roles { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -95,7 +96,5 @@ namespace Model.EntityFramework
                 .Property(e => e.ID)
                 .IsUnicode(false);
         }
-
-        public System.Data.Entity.DbSet<Model.ViewModel.ProductViewModel> ProductViewModels { get; set; }
     }
 }

@@ -34,7 +34,9 @@ namespace BatmanShop.Areas.Admin.Controllers
                     userSession.UserID = user.ID;
                     userSession.GroupID = user.GroupID;
                     userSession.Image = user.Image;
-
+                    //Phần này là xử lý cho phân quyền bài 52
+                    var listPermission = dao.GetListPermission(user.UserName);
+                    Session.Add(CommonConstants.SESSION_PERMISSIONS, listPermission);
                     //Add login session
                     Session.Add(CommonConstants.USER_SESSION, userSession);
 
