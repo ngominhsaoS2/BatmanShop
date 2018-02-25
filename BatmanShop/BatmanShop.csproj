@@ -295,6 +295,7 @@
     <Content Include="Assets\Admin\js\Chart.min.js" />
     <Content Include="Assets\Admin\js\chartinator.js" />
     <Content Include="Assets\Admin\js\classie.js" />
+    <Content Include="Assets\Admin\js\controller\productController.js" />
     <Content Include="Assets\Admin\js\custom.js" />
     <Content Include="Assets\Admin\js\export.min.js" />
     <Content Include="Assets\Admin\js\images\dragIconRoundBig.svg" />

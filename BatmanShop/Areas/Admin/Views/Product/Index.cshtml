@@ -6,6 +6,10 @@
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
 
+@section jsFooter{  
+    <script src="/Assets/Admin/js/controller/productController.js"></script>
+}
+
 <div class="tables">
     @using (Html.BeginForm("Index", "Product", FormMethod.Get))
     {
@@ -40,6 +44,7 @@
                 <tr>
                     <th>Code</th>
                     <th>Name</th>
+                    <th>Image</th>
                     <th>Description</th>
                     <th>Price</th>
                     <th>Status</th>
@@ -52,10 +57,13 @@
                     <tr id="row_@item.ID">
                         <td>@item.Code</td>
                         <td>@item.Name</td>
+                        <td><img class="img-responsive" width="150" height="auto" src="@item.Image" alt=""></td>
                         <td>@item.Description</td>
                         <td>@item.Price.GetValueOrDefault(0).ToString("N0")</td>
                         <td>@(item.Status ? "Active" : "Not available")</td>
                         <td>
+                            <a href="#" data-id="@item.ID" class="btn-images">More images</a>
+                            |
                             <a href="/Admin/Product/Edit/@item.ID">Edit</a>
                             |
                             @Ajax.ActionLink("Delete", "Delete", new { @id = @item.ID }, new AjaxOptions
@@ -71,5 +79,31 @@
             </tbody>
         </table>
         @Html.PagedListPager(Model, page => Url.Action("Index", new { page, @searchString = @ViewBag.SearchString }))
+    </div>
+</div>
+<!-- Modal -->
+<div id="imagesManage" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">More images</h4>
+            </div>
+            <div class="modal-body">
+                <div id="imageList" style="margin:5px;">
+
+                </div>
+                <div class="clear"></div>
+                <input type="button" id="btnChooseImages" class="btn btn-primary" value="Select images" />
+                <input type="hidden" id="hidProductID" value="0" />
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-success" id="btnSaveImages">Save</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+
     </div>
 </div>
