@@ -11,6 +11,9 @@ namespace Model.EntityFramework
     {
         public int ID { get; set; }
 
+        [StringLength(100)]
+        public string Name { get; set; }
+
         [StringLength(250)]
         public string Image { get; set; }
 
@@ -32,6 +35,6 @@ namespace Model.EntityFramework
         [StringLength(50)]
         public string ModifiedBy { get; set; }
 
-        public bool? Status { get; set; }
+        public bool Status { get; set; }
     }
 }

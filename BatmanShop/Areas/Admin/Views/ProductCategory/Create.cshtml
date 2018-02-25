@@ -13,6 +13,20 @@
 </div>
 <br />
 
+@section jsFooter {
+    <script>
+        $('#btnSelectImage').on('click', function (e) {
+            e.preventDefault();
+            var finder = new CKFinder();
+            finder.selectActionFunction = function (url) {
+                $('#txtImage').val(url);
+            };
+            finder.popup();
+        })
+
+    </script>
+}
+
 @using (Html.BeginForm("Create", "ProductCategory", FormMethod.Post)) 
 {
     @Html.AntiForgeryToken()
@@ -56,6 +70,17 @@
             </div>
             <div class="col-md-4">
                 @Html.ValidationMessageFor(model => model.DisplayOrder, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Image, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-6">
+                @Html.TextBoxFor(model => model.Image, new { @class = "form-control", id = "txtImage" })
+            </div>
+            <div class="col-md-4">
+                <a id="btnSelectImage" href="#">Select</a>
+                @Html.ValidationMessageFor(model => model.Image, "", new { @class = "text-danger" })
             </div>
         </div>
 

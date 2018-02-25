@@ -175,6 +175,7 @@ namespace Model.Dao
             var model = (from a in db.Products
                          join b in db.ProductCategories
                          on a.ProductCategoryID equals b.ID
+                         where a.Status == true
                          select new
                          {
                              CategoryMetaTitle = b.MetaTitle,

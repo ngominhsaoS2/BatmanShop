@@ -31,11 +31,11 @@ namespace Model.Dao
         {
             if(top != null)
             {
-                return db.ProductCategories.Where(x => x.Status == true).OrderByDescending(x => x.CreatedDate).Take((int)top).ToList();
+                return db.ProductCategories.Where(x => x.Status == true && x.ShowInHome==true).OrderByDescending(x => x.CreatedDate).Take((int)top).ToList();
             }
             else
             {
-                return db.ProductCategories.Where(x => x.Status == true).ToList();
+                return db.ProductCategories.Where(x => x.Status == true && x.ShowInHome == true).ToList();
             }
             
         }
@@ -67,6 +67,7 @@ namespace Model.Dao
                 productCategory.MetaTitle = entity.MetaTitle;
                 productCategory.ParentID = entity.ParentID;
                 productCategory.DisplayOrder = entity.DisplayOrder;
+                productCategory.Image = entity.Image;
                 productCategory.SeoTitle = entity.SeoTitle;
                 productCategory.MetaKeywords = entity.MetaKeywords;
                 productCategory.MetaDescriptions = entity.MetaDescriptions;

@@ -223,6 +223,7 @@
     <Compile Include="Areas\Admin\Controllers\OrderController.cs" />
     <Compile Include="Areas\Admin\Controllers\ProductCategoryController.cs" />
     <Compile Include="Areas\Admin\Controllers\ProductController.cs" />
+    <Compile Include="Areas\Admin\Controllers\SlideController.cs" />
     <Compile Include="Areas\Admin\Controllers\UserController.cs" />
     <Compile Include="Areas\Admin\Models\LoginModel.cs" />
     <Compile Include="Common\CommonConstants.cs" />
@@ -1306,6 +1307,7 @@
     <Content Include="Assets\Client\images\ac.png" />
     <Content Include="Assets\Client\images\arrow.png" />
     <Content Include="Assets\Client\images\banner.jpg" />
+    <Content Include="Assets\Client\images\banner2.jpg" />
     <Content Include="Assets\Client\images\img-sprite.png" />
     <Content Include="Assets\Client\images\logo.png" />
     <Content Include="Assets\Client\images\pi.jpg" />
@@ -1321,6 +1323,9 @@
     <Content Include="Assets\Client\images\pr2.png" />
     <Content Include="Assets\Client\images\pr3.png" />
     <Content Include="Assets\Client\images\pr4.png" />
+    <Content Include="Assets\Client\images\S01.jpg" />
+    <Content Include="Assets\Client\images\S02.jpg" />
+    <Content Include="Assets\Client\images\S03.jpg" />
     <Content Include="Assets\Client\images\s1.jpg" />
     <Content Include="Assets\Client\images\s2.jpg" />
     <Content Include="Assets\Client\images\s3.jpg" />
@@ -1423,6 +1428,9 @@
     <Content Include="Assets\Client\fonts\fontawesome-webfont.woff2" />
     <Content Include="Assets\Client\fonts\FontAwesome.otf" />
     <Content Include="Areas\Admin\Views\Shared\_401.cshtml" />
+    <Content Include="Areas\Admin\Views\Slide\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Slide\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\Slide\Edit.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />

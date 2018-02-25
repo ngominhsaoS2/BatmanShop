@@ -15,6 +15,7 @@ namespace BatmanShop.Controllers
             ViewBag.ProductCategory = new ProductCategoryDao().ListAll();
             ViewBag.TopNewProducts = new ProductDao().ListTopNewProduct(3);
             ViewBag.TopNewContents = new ContentDao().ListTopNewContent(3);
+            ViewBag.TopNewSlides = new SlideDao().ListTopNewSlide(3);
             return View();
         }
 

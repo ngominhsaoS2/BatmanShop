@@ -1,14 +1,20 @@
-﻿
-@{
+﻿@{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
     var productCategory = (List<Model.EntityFramework.ProductCategory>)ViewBag.ProductCategory;
     var topNewProducts = (List<Model.ViewModel.ProductViewModel>)ViewBag.TopNewProducts;
     var topNewContents = (List<Model.EntityFramework.Content>)ViewBag.TopNewContents;
+    var topNewSlides = (List<Model.EntityFramework.Slide>)ViewBag.TopNewSlides;
 }
 
+
 @section banner{
-    <div class="banner">
+    <div class="banner" style="background: url(/Assets/Client/images/TG073.jpg) no-repeat center;
+                                width: 100%;
+	                            min-height: 600px;
+	                            display: block;
+	                            padding: 12em 0 0;
+	                            background-size: cover;">
     <div class="container">
         <div class="banner-matter">
             <h1>Get active get running<span>push your limits</h1>
@@ -127,66 +133,40 @@
             <div class="slider">
                 <div class="callbacks_container">
                     <ul class="rslides" id="slider">
+                    @foreach (var item in topNewSlides)
+                    {
                         <li>
-                            <img src="/Assets/Client/images/0022.jpg" alt="">
+                            <a href="@item.Link"><img src="@item.Image" alt="@item.Name"></a>
                         </li>
-                        <li>
-                            <img src="/Assets/Client/images/0030.jpg" alt="">
-                        </li>
-                        <li>
-                            <img src="/Assets/Client/images/0022.jpg" alt="">
-                        </li>
-                        <li>
-                            <img src="/Assets/Client/images/0030.jpg" alt="">
-                        </li>
+                    }    
                     </ul>
                 </div>
                 <div class="london">
-                    <h5>London Marathon 2013</h5>
-                    <p>24/2013 - 6Mins</p>
+                    <h5>Super hot events</h5>
+                    <p>Enjoy now !!!</p>
                 </div>
             </div>
 
         </div>
         <div class="col-md-4 bottom-grid">
-            <h4>Latest Sport News</h4>
-            <div class="news">
-                <span>25/07</span>
-                <p>Sporting wonders have come so thick and fast since last summer that we decided it... time </p>
-                <div class="foot">
-                    <label>football</label>
-                    <ul class="eye ">
-                        <li><span><i> </i>315</span></li>
-                        <li><a href="#"><i class="comment"> </i> 3</a></li>
-                    </ul>
-                    <div class="clearfix"> </div>
+            <h4>Latest News</h4>
+            @foreach (var item in topNewContents)
+            {
+                var link = "/News/" + item.MetaTitle + "-" + item.ID;
+                <div class="news">
+                    <span><a href="@link" style="color:white;">@item.CreatedDate.Value.ToString("dd/MM/yyyy")</a></span>
+                    <p><a href="@link" style="color:white;">@item.Name</a></p>
+                    <div class="foot">
+                        <label>News</label>
+                        <ul class="eye ">
+                            <li><span><i> </i>315</span></li>
+                            <li><a href="@link"><i class="comment"> </i> 3</a></li>
+                        </ul>
+                        <div class="clearfix"> </div>
+                    </div>
                 </div>
-            </div>
-            <div class="news">
-                <span>25/07</span>
-                <p>Sporting wonders have come so thick and fast since last summer that we decided it... time </p>
-                <div class="foot">
-                    <label>football</label>
-                    <ul class="eye ">
-                        <li><span><i> </i>315</span></li>
-                        <li><a href="#"><i class="comment"> </i> 3</a></li>
-                    </ul>
-                    <div class="clearfix"> </div>
-                </div>
-            </div>
-            <div class="news">
-                <span>25/07</span>
-                <p>Sporting wonders have come so thick and fast since last summer that we decided it... time </p>
-                <div class="foot">
-                    <label>football</label>
-                    <ul class="eye ">
-                        <li><span><i> </i>315</span></li>
-                        <li><a href="#"><i class="comment"> </i> 3</a></li>
-                    </ul>
-                    <div class="clearfix"> </div>
-                </div>
-            </div>
-            <a href="#" class="view">view all articles</a>
+            }
+            <a href="/News" class="view">VIEW ALL NEWS</a>
         </div>
         <div class="clearfix"> </div>
     </div>

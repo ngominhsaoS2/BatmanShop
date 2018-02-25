@@ -5,9 +5,6 @@
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
 
-<h1>Create new product</h1>
-</br>
-
 @section jsFooter {
     <script>
         $('#btnSelectImage').on('click', function (e) {
@@ -25,6 +22,9 @@
     </script>
 }
 
+<h1>Create new product</h1>
+</br>
+
 <div>
     @Html.ActionLink("Back to List", "Index")
 </div>
@@ -35,7 +35,7 @@
     @Html.AntiForgeryToken()
     
     <div class="form-horizontal">
-        @*@Html.ValidationSummary(true, "", new { @class = "text-danger" })*@
+        @Html.ValidationSummary(false, "", new { @class = "text-danger" })
         <div class="form-group">
             @Html.LabelFor(model => model.Code, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-6">

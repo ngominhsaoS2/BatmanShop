@@ -121,7 +121,7 @@ namespace Model.Dao
         public List<Content> ListAll(ref int totalRecord, int pageIndex = 1, int pageSize = 9)
         {
             totalRecord = db.Contents.Count();
-            var model = db.Contents.OrderByDescending(x => x.CreatedDate).Skip((pageIndex - 1) * pageSize).Take(pageSize);
+            var model = db.Contents.Where(x=>x.Status==true).OrderByDescending(x => x.CreatedDate).Skip((pageIndex - 1) * pageSize).Take(pageSize);
             return model.ToList();
         }
 
@@ -203,7 +203,7 @@ namespace Model.Dao
         /// <returns></returns>
         public List<Content> ListTopNewContent(int top)
         {
-            return db.Contents.OrderByDescending(x => x.CreatedDate).Take(top).ToList();
+            return db.Contents.Where(x => x.Status == true).OrderByDescending(x => x.CreatedDate).Take(top).ToList();
         }
 
 
