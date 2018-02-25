@@ -271,12 +271,37 @@ namespace Model.Dao
             return model.ToList();
         }
 
+        /// <summary>
+        /// Update MoreImages
+        /// </summary>
+        /// <param name="productId"></param>
+        /// <param name="images"></param>
         public void UpdateImages(long productId, string images)
         {
             var product = db.Products.Find(productId);
             product.MoreImages = images;
             db.SaveChanges();
         }
+
+        /// <summary>
+        /// Update ViewCount of the Product
+        /// </summary>
+        /// <param name="productId"></param>
+        /// <returns></returns>
+        public void UpdateViewCount(long productId)
+        {
+            var product = db.Products.Find(productId);
+            if(product.ViewCount != null)
+            {
+                product.ViewCount += 1;
+            }
+            else
+            {
+                product.ViewCount = 1;
+            }
+            db.SaveChanges();
+        }
+
 
 
 

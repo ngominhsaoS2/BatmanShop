@@ -49,10 +49,13 @@ namespace BatmanShop.Controllers
 
         public ActionResult Detail(long id)
         {
-            var product = new ProductDao().GetByID(id);
+            var dao = new ProductDao();
+            var product = dao.GetByID(id);
             ViewBag.ProductCategory = new ProductCategoryDao().GetByID((long)product.ProductCategoryID);
             ViewBag.NewRelatedProducts = new ProductDao().ListNewRelatedProduct(id, 3);
             ViewBag.HotRelatedProducts = new ProductDao().ListHotRelatedProduct(id, 3);
+            //Update ViewCount cho Product này
+            dao.UpdateViewCount(id);
             return View(product);
         }
 
