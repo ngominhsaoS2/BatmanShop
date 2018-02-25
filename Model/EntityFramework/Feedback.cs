@@ -28,6 +28,6 @@ namespace Model.EntityFramework
 
         public DateTime? CreatedDate { get; set; }
 
-        public bool? Status { get; set; }
+        public bool Status { get; set; }
     }
 }
