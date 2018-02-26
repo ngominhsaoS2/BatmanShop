@@ -20,6 +20,9 @@ namespace Model.EntityFramework
         [StringLength(250)]
         public string Description { get; set; }
 
+        [Column(TypeName = "ntext")]
+        public string Content { get; set; }
+
         [StringLength(50)]
         public string CreatedBy { get; set; }
 

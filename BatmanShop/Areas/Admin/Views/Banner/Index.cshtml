@@ -41,6 +41,7 @@
                     <th>ID</th>
                     <th>Name</th>
                     <th>Image</th>
+                    <th>Content</th>
                     <th>Description</th>
                     <th>Status</th>
                     <th>Action</th>
@@ -53,6 +54,7 @@
                         <td>@item.ID</td>
                         <td>@item.Name</td>
                         <td><img class="img-responsive" width="150" height="auto" src="@item.Image" alt=""></td>
+                        <td>@item.Content</td>
                         <td>@item.Description</td>
                         <td>@(item.Status ? "Active" : "Not available")</td>
                         <td>
