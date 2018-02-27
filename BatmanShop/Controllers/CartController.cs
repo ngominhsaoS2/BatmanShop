@@ -68,7 +68,6 @@ namespace BatmanShop.Controllers
             }
 
             return RedirectToAction("Index");
-
         }
 
         //Đoạn này copy nguyên từ bản master
