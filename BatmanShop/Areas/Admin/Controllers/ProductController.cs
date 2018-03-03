@@ -180,7 +180,15 @@ namespace BatmanShop.Areas.Admin.Controllers
             
         }
 
-
+        public JsonResult ListName(string q)
+        {
+            var data = new ProductDao().ListName(q);
+            return Json(new
+            {
+                data = data,
+                status = true
+            }, JsonRequestBehavior.AllowGet);
+        }
 
 
 

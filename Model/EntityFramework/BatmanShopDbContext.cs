@@ -4,6 +4,7 @@ namespace Model.EntityFramework
     using System.Data.Entity;
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Linq;
+    using ViewModel;
 
     public partial class BatmanShopDbContext : DbContext
     {
@@ -34,6 +35,11 @@ namespace Model.EntityFramework
         public virtual DbSet<Menu> Menus { get; set; }
         public virtual DbSet<Role> Roles { get; set; }
         public virtual DbSet<Banner> Banners { get; set; }
+        public virtual DbSet<Warehouse> Warehouses { get; set; }
+        public virtual DbSet<Action> Actions { get; set; }
+        public virtual DbSet<Inventory> Inventories { get; set; }
+        public virtual DbSet<OpenInventory> OpenInventories { get; set; }
+        public virtual DbSet<vOpenInventory> vOpenInventories { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

@@ -1,0 +1,86 @@
+﻿@model Model.EntityFramework.OpenInventory
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+@section jsFooter{
+    <script src="/Assets/Admin/js/controller/searchController.js"></script>
+    <script>
+        function addNewRow() {
+            var table = document.getElementById("tableBody");
+            var row = table.insertRow(0);
+            var cell0 = row.insertCell(0);
+            var cell1 = row.insertCell(1);
+            var cell2 = row.insertCell(2);
+            var cell3 = row.insertCell(3);
+            var cell4 = row.insertCell(4);
+            var cell5 = row.insertCell(5);
+            cell0.innerHTML = $('#txtWarehouseID').val();
+            cell1.innerHTML = "NEW CELL2";
+            cell2.innerHTML = "NEW CELL1";
+            cell3.innerHTML = "NEW CELL2";
+            cell4.innerHTML = "NEW CELL1";
+            cell5.innerHTML = "NEW CELL2";
+        }
+
+    </script>
+    
+}
+
+<h1>Create new Open Inventory</h1>
+</br>
+    
+    <div class="form-horizontal">
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group form-inline">
+            @Html.LabelFor(model => model.WarehouseID, htmlAttributes: new { @class = "control-label col-md-2" })
+            <input class="form-control col-md-3" type="search" name="keyword" id="txtWarehouseID">
+            @Html.LabelFor(model => model.Year, htmlAttributes: new { @class = "control-label col-md-1" })
+            @Html.EditorFor(model => model.Year, new { htmlAttributes = new { @class = "form-control col-md-3" } })
+            @Html.LabelFor(model => model.Month, htmlAttributes: new { @class = "control-label col-md-1" })
+            @Html.EditorFor(model => model.Month, new { htmlAttributes = new { @class = "form-control col-md-3" } })
+        </div>
+
+        <div class="form-group form-inline">
+            @Html.LabelFor(model => model.ProductID, htmlAttributes: new { @class = "control-label col-md-2" })
+            <input class="form-control col-md-3" type="search" name="keyword" id="txtProductID">
+            @Html.LabelFor(model => model.Quantity, htmlAttributes: new { @class = "control-label col-md-1" })
+            @Html.EditorFor(model => model.Quantity, new { htmlAttributes = new { @class = "form-control col-md-3" } })
+            <div class="col-md-2">
+                <button class="btn btn-primary" onclick="addNewRow()">Add</button>
+            </div>
+            
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+
+<div class="tables">
+    <div class="table-responsive bs-example widget-shadow">
+        <table class="table table-bordered" >
+            <thead>
+                <tr>
+                    <th>WarehouseID</th>
+                    <th>Year</th>
+                    <th>Month</th>
+                    <th>ProductID</th>
+                    <th>Quantity</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody id="tableBody">
+                
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>

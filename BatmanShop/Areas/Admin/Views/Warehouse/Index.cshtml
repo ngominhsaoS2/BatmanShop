@@ -1,0 +1,75 @@
+﻿@using PagedList.Mvc
+@model PagedList.IPagedList<Model.EntityFramework.Warehouse>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<div class="tables">
+    @using (Html.BeginForm("Index", "Warehouse", FormMethod.Get))
+    {
+        <div class="row form-group">
+            <div class="col-lg-12">
+                <div class="col-md-4">
+                    <h1 class="title1">List of Warehouses</h1>
+                </div>
+                <div class="col-md-3">
+                    <input type="text" value="@ViewBag.SearchString" class="form-control" name="searchString" />
+                </div>
+                <div class="col-md-4">
+                    <button type="submit" class="btn btn-success">Search</button>
+                    <a type="submit" class="btn btn-success" href="/Admin/Warehouse/Index">Clear</a>
+                    <a type="submit" class="btn btn-primary" href="/Admin/Warehouse/Create">Create</a>
+                </div>
+                <div class="col-md-1">
+                    <select class="form-control" name="">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    }
+
+    <div class="table-responsive bs-example widget-shadow">
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Code</th>
+                    <th>Name</th>
+                    <th>Address</th>
+                    <th>Phone</th>
+                    <th>Status</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr id="row_@item.ID">
+                        <td>@item.Code</td>
+                        <td>@item.Name</td>
+                        <td>@item.Address</td>
+                        <td>@item.Phone</td>
+                        <td>@(item.Status ? "Active" : "Not available")</td>
+                        <td>
+                            <a href="/Admin/Warehouse/Edit/@item.ID">Edit</a>
+                            |
+                            @Ajax.ActionLink("Delete", "Delete", new { @id = @item.ID }, new AjaxOptions
+                       {
+                           Confirm = "Do you really want to delete this row?",
+                           OnComplete = "$('#row_" + @item.ID + "').remove()",
+                           HttpMethod = "Delete"
+                       })
+                        </td>
+                    </tr>
+                }
+
+            </tbody>
+        </table>
+        @Html.PagedListPager(Model, page => Url.Action("Index", new { page, @searchString = @ViewBag.SearchString }))
+    </div>
+</div>

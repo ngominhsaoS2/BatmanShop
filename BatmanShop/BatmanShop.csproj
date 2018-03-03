@@ -222,11 +222,13 @@
     <Compile Include="Areas\Admin\Controllers\FeedbackController.cs" />
     <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
     <Compile Include="Areas\Admin\Controllers\LoginController.cs" />
+    <Compile Include="Areas\Admin\Controllers\OpenInventoryController.cs" />
     <Compile Include="Areas\Admin\Controllers\OrderController.cs" />
     <Compile Include="Areas\Admin\Controllers\ProductCategoryController.cs" />
     <Compile Include="Areas\Admin\Controllers\ProductController.cs" />
     <Compile Include="Areas\Admin\Controllers\SlideController.cs" />
     <Compile Include="Areas\Admin\Controllers\UserController.cs" />
+    <Compile Include="Areas\Admin\Controllers\WarehouseController.cs" />
     <Compile Include="Areas\Admin\Models\LoginModel.cs" />
     <Compile Include="Common\CommonConstants.cs" />
     <Compile Include="Common\Encryptor.cs" />
@@ -259,6 +261,7 @@
     <Content Include="Assets\Admin\css\font-awesome.css" />
     <Content Include="Assets\Admin\css\graph.css" />
     <Content Include="Assets\Admin\css\jqcandlestick.css" />
+    <Content Include="Assets\Admin\css\jquery-ui.css" />
     <Content Include="Assets\Admin\css\monthly.css" />
     <Content Include="Assets\Admin\css\owl.carousel.css" />
     <Content Include="Assets\Admin\css\SidebarNav.min.css" />
@@ -299,6 +302,7 @@
     <Content Include="Assets\Admin\js\Chart.min.js" />
     <Content Include="Assets\Admin\js\chartinator.js" />
     <Content Include="Assets\Admin\js\classie.js" />
+    <Content Include="Assets\Admin\js\controller\searchController.js" />
     <Content Include="Assets\Admin\js\controller\productController.js" />
     <Content Include="Assets\Admin\js\custom.js" />
     <Content Include="Assets\Admin\js\export.min.js" />
@@ -308,6 +312,7 @@
     <Content Include="Assets\Admin\js\index1.js" />
     <Content Include="Assets\Admin\js\index2.js" />
     <Content Include="Assets\Admin\js\jquery-1.11.1.min.js" />
+    <Content Include="Assets\Admin\js\jquery-ui.js" />
     <Content Include="Assets\Admin\js\jquery.flot.js" />
     <Content Include="Assets\Admin\js\jquery.jqcandlestick.min.js" />
     <Content Include="Assets\Admin\js\jquery.nicescroll.js" />
@@ -1489,6 +1494,11 @@
     <Content Include="Areas\Admin\Views\Banner\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Banner\Create.cshtml" />
     <Content Include="Areas\Admin\Views\Banner\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Warehouse\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Warehouse\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\Warehouse\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\OpenInventory\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\OpenInventory\Create.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />

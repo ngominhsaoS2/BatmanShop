@@ -115,7 +115,7 @@ namespace Model.Dao
         }
 
         /// <summary>
-        /// Get product list when having ProductCategoryID
+        /// Get Product list when having ProductCategoryID
         /// </summary>
         /// <param name="categoryID"></param>
         /// <param name="totalRecord"></param>
@@ -155,7 +155,7 @@ namespace Model.Dao
         }
 
         /// <summary>
-        /// Get new related products when having productId
+        /// Get new related Products when having productId
         /// </summary>
         /// <param name="productId"></param>
         /// <returns></returns>
@@ -201,7 +201,7 @@ namespace Model.Dao
         }
 
         /// <summary>
-        /// Get feature products
+        /// Get feature Products
         /// </summary>
         /// <param name="top"></param>
         /// <returns></returns>
@@ -211,7 +211,7 @@ namespace Model.Dao
         }
 
         /// <summary>
-        /// Get hot related products when having productId
+        /// Get hot related Products when having productId
         /// </summary>
         /// <param name="top"></param>
         /// <returns></returns>
@@ -222,7 +222,7 @@ namespace Model.Dao
         }
 
         /// <summary>
-        /// Get product list when having a keyword
+        /// Get Product list when having a keyword
         /// </summary>
         /// <param name="keyword"></param>
         /// <returns></returns>
@@ -232,7 +232,7 @@ namespace Model.Dao
         }
 
         /// <summary>
-        /// Search products and paged list as well
+        /// Search Products and paged list as well
         /// </summary>
         /// <param name="keyword"></param>
         /// <param name="totalRecord"></param>

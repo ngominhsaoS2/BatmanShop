@@ -7,7 +7,7 @@ using System.Web.Mvc;
 
 namespace BatmanShop.Areas.Admin.Controllers
 {
-    public class OrderController : Controller
+    public class OrderController : BaseController
     {
         ////Display, create, edit, delete User
         //Index page of User management
