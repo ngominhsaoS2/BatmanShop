@@ -18,13 +18,16 @@
                 productID = $(str).text();
                 str = "#quantity" + i;
                 quantity = $(str).text();
-                list.push({
-                    WarehouseID: warehouseID,
-                    Year: year,
-                    Month: month,
-                    ProductID: productID,
-                    Quantity: quantity
-                });
+                if (quantity > 0) {
+                    list.push({
+                        WarehouseID: warehouseID,
+                        Year: year,
+                        Month: month,
+                        ProductID: productID,
+                        Quantity: quantity
+                    });
+                }
+                
             }
 
             $.ajax({

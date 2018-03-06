@@ -13,16 +13,18 @@ namespace BatmanShop.Areas.Admin.Controllers
     {
         ////Display, create, edit, delete User
         //Index page of OpenInventory management
-        public ActionResult Index(string searchString, int page = 1, int pageSize = 10)
+        public ActionResult Index(string searchString, string month, int page = 1, int pageSize = 10, int? year = null, int? warehouseId = null )
         {
             var dao = new OpenInventoryDao();
-            var model = dao.ListAllPaging(searchString, page, pageSize);
+            var model = dao.ListAllPaging(searchString, page, pageSize, month, warehouseId, year);
             ViewBag.SearchString = searchString;
+            ViewBag.WarehouseID = warehouseId;
+            ViewBag.Year = year;
             ViewBag.PageSize = pageSize;
             return View(model);
         }
 
-        //Create new list or OpenInventory
+        //Create new list of OpenInventory
         [HttpGet]
         public ActionResult Create()
         {
@@ -38,7 +40,6 @@ namespace BatmanShop.Areas.Admin.Controllers
             foreach (var item in jsonList)
             {
                 long id = new OpenInventoryDao().Insert(item);
-                
             }
 
             return Json(new
@@ -47,15 +48,45 @@ namespace BatmanShop.Areas.Admin.Controllers
             });
         }
 
-        
+        //Edit an OpenInventory
+        [HttpGet]
+        public ActionResult Edit(long id)
+        {
+            var openInventory = new OpenInventoryDao().GetByID(id);
+            return View(openInventory);
+        }
+
+        [HttpPost]
+        [ValidateInput(false)]
+        public ActionResult Edit(OpenInventory openInventory)
+        {
+            if (ModelState.IsValid)
+            {
+                var result = new OpenInventoryDao().Update(openInventory);
+                if (result)
+                {
+                    SetAlert("Edit this open inventory successfully.", "success");
+                }
+                else
+                {
+                    ModelState.AddModelError("", "Edit this open inventory failed.");
+                }
+
+            }
+            return View(openInventory);
+        }
+
+        //Delete an OpenInventory
+        [HttpDelete]
+        public ActionResult Delete(long id)
+        {
+            new OpenInventoryDao().Delete(id);
+            return RedirectToAction("Index");
+        }
 
 
 
-
-
-
-
-
+        ////Other methods
 
 
 

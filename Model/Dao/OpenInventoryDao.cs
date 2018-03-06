@@ -118,7 +118,7 @@ namespace Model.Dao
         /// <param name="page"></param>
         /// <param name="pageSize"></param>
         /// <returns></returns>
-        public IEnumerable<vOpenInventory> ListAllPaging(string searchString, int page, int pageSize)
+        public IEnumerable<vOpenInventory> ListAllPaging(string searchString, int page, int pageSize, string month, int? warehouseId = null, int? year = null)
         {
             IQueryable<vOpenInventory> model = db.vOpenInventories;
             if (!string.IsNullOrEmpty(searchString))
@@ -126,6 +126,19 @@ namespace Model.Dao
                 model = model.Where(x => x.WarehouseCode.Contains(searchString) || x.WarehouseName.Contains(searchString)
                 || x.ProductCode.Contains(searchString) || x.ProductName.Contains(searchString));
             }
+            if(year != null)
+            {
+                model = model.Where(x => x.Year == year);
+            }
+            if (!string.IsNullOrEmpty(month))
+            {
+                model = model.Where(x => x.Month.Contains(month));
+            }
+            if (warehouseId != null)
+            {
+                model = model.Where(x => x.WarehouseID == warehouseId);
+            }
+
             return model.OrderByDescending(x => x.CreatedDate).ToPagedList(page, pageSize);
         }
 

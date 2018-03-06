@@ -30,7 +30,8 @@ namespace Model.ViewModel
 
         public int? Year { get; set; }
 
-        public int? Month { get; set; }
+        [StringLength(3)]
+        public string Month { get; set; }
 
         public long? ProductID { get; set; }
 
