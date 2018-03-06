@@ -115,6 +115,44 @@ namespace Model.Dao
         {
             return db.Warehouses.Where(x => x.Name.Contains(keyword)).Select(x => x.Name).ToList();
         }
+        //public List<Warehouse> ListName(string keyword)
+        //{
+        //    var listWarehouse = (from a in db.Warehouses
+        //                         where a.Name.Contains(keyword)
+        //                         select new
+        //                         {
+        //                             ID = a.ID,
+        //                             Code = a.Code,
+        //                             Name = a.Name,
+        //                             Address = a.Address,
+        //                             Phone = a.Phone,
+        //                             MetaTitle = a.MetaTitle,
+        //                             Description = a.Description,
+        //                             Image = a.Image,
+        //                             CreatedDate = a.CreatedDate,
+        //                             CreatedBy = a.CreatedBy,
+        //                             ModifiedDate = a.ModifiedDate,
+        //                             ModifiedBy = a.ModifiedBy,
+        //                             Status = a.Status
+        //                         }).AsEnumerable().Select(x => new Warehouse()
+        //                         {
+        //                             ID = x.ID,
+        //                             Code = x.Code,
+        //                             Name = x.Name,
+        //                             Address = x.Address,
+        //                             Phone = x.Phone,
+        //                             MetaTitle = x.MetaTitle,
+        //                             Description = x.Description,
+        //                             Image = x.Image,
+        //                             CreatedDate = x.CreatedDate,
+        //                             CreatedBy = x.CreatedBy,
+        //                             ModifiedDate = x.ModifiedDate,
+        //                             ModifiedBy = x.ModifiedBy,
+        //                             Status = x.Status
+        //                         });
+        //    return listWarehouse.ToList();
+        //}
+
 
 
 

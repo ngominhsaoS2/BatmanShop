@@ -1,28 +1,30 @@
-﻿@model Model.EntityFramework.OpenInventory
-
-@{
+﻿@{
     ViewBag.Title = "Create";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
 
 @section jsFooter{
     <script src="/Assets/Admin/js/controller/searchController.js"></script>
+    <script src="/Assets/Admin/js/controller/openInventoryController.js"></script>
     <script>
+        var i = 0;
         function addNewRow() {
+            i = i + 1;
             var table = document.getElementById("tableBody");
-            var row = table.insertRow(0);
-            var cell0 = row.insertCell(0);
-            var cell1 = row.insertCell(1);
-            var cell2 = row.insertCell(2);
-            var cell3 = row.insertCell(3);
-            var cell4 = row.insertCell(4);
-            var cell5 = row.insertCell(5);
-            cell0.innerHTML = $('#txtWarehouseID').val();
-            cell1.innerHTML = "NEW CELL2";
-            cell2.innerHTML = "NEW CELL1";
-            cell3.innerHTML = "NEW CELL2";
-            cell4.innerHTML = "NEW CELL1";
-            cell5.innerHTML = "NEW CELL2";
+            var warehouseID = $('#txtWarehouseID').val();
+            var year = $('#txtYear').val();
+            var month = $('#txtMonth').val();
+            var productID = $('#txtProductID').val();
+            var quantity = $('#txtQuantity').val();
+            var pre = "<tr id="+ i +">" +
+                      "    <td id=warehouse"+ i +">" + warehouseID + "</td>" +
+                      "    <td id=year"+ i +">" + year + "</td>" +
+                      "    <td id=month"+ i +">" + month + "</td>" +
+                      "    <td id=product"+ i +">" + productID + "</td>" +
+                      "    <td id=quantity"+ i +">" + quantity + "</td>" +
+                      "</tr>";
+
+            $("#tableBody").prepend(pre);
         }
 
     </script>
@@ -31,55 +33,52 @@
 
 <h1>Create new Open Inventory</h1>
 </br>
-    
     <div class="form-horizontal">
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="form-group form-inline">
-            @Html.LabelFor(model => model.WarehouseID, htmlAttributes: new { @class = "control-label col-md-2" })
+            <label class="control-label col-md-2">WarehouseID</label>
             <input class="form-control col-md-3" type="search" name="keyword" id="txtWarehouseID">
-            @Html.LabelFor(model => model.Year, htmlAttributes: new { @class = "control-label col-md-1" })
-            @Html.EditorFor(model => model.Year, new { htmlAttributes = new { @class = "form-control col-md-3" } })
-            @Html.LabelFor(model => model.Month, htmlAttributes: new { @class = "control-label col-md-1" })
-            @Html.EditorFor(model => model.Month, new { htmlAttributes = new { @class = "form-control col-md-3" } })
+            <label class="control-label col-md-1">Year</label>
+            <input class="form-control col-md-3" type="number" name="keyword" id="txtYear">
+            <label class="control-label col-md-1">Month</label>
+            <input class="form-control col-md-3" type="number" name="keyword" id="txtMonth">
         </div>
 
         <div class="form-group form-inline">
-            @Html.LabelFor(model => model.ProductID, htmlAttributes: new { @class = "control-label col-md-2" })
+            <label class="control-label col-md-2">ProductID</label>
             <input class="form-control col-md-3" type="search" name="keyword" id="txtProductID">
-            @Html.LabelFor(model => model.Quantity, htmlAttributes: new { @class = "control-label col-md-1" })
-            @Html.EditorFor(model => model.Quantity, new { htmlAttributes = new { @class = "form-control col-md-3" } })
+            <label class="control-label col-md-1">Quantity</label>
+            <input class="form-control col-md-3" type="number" name="keyword" id="txtQuantity">
             <div class="col-md-2">
                 <button class="btn btn-primary" onclick="addNewRow()">Add</button>
-            </div>
-            
+            </div> 
         </div>
+    </div>
 
+    <div class="tables">
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
+                <button id="btnCreate" class="btn btn-default">Create</button>
             </div>
         </div>
+        <br />
+        <div class="table-responsive bs-example widget-shadow">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>WarehouseID</th>
+                        <th>Year</th>
+                        <th>Month</th>
+                        <th>ProductID</th>
+                        <th>Quantity</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody id="tableBody"></tbody>
+            </table>
+        </div>
     </div>
-
-<div class="tables">
-    <div class="table-responsive bs-example widget-shadow">
-        <table class="table table-bordered" >
-            <thead>
-                <tr>
-                    <th>WarehouseID</th>
-                    <th>Year</th>
-                    <th>Month</th>
-                    <th>ProductID</th>
-                    <th>Quantity</th>
-                    <th>Action</th>
-                </tr>
-            </thead>
-            <tbody id="tableBody">
-                
-            </tbody>
-        </table>
-    </div>
-</div>
+    
 
 <div>
     @Html.ActionLink("Back to List", "Index")

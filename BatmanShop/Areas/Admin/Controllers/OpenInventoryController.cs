@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Script.Serialization;
 
 namespace BatmanShop.Areas.Admin.Controllers
 {
@@ -30,24 +31,20 @@ namespace BatmanShop.Areas.Admin.Controllers
 
         [HttpPost]
         [ValidateInput(false)]
-        public ActionResult Create(List<OpenInventory> listOpenInventory)
+        public JsonResult Create(string listOpenInventory)
         {
-            if (ModelState.IsValid)
+            var jsonList = new JavaScriptSerializer().Deserialize<List<OpenInventory>>(listOpenInventory);
+
+            foreach (var item in jsonList)
             {
-                var dao = new OpenInventoryDao();
-                bool id = dao.InsertList(listOpenInventory);
-                if (id)
-                {
-                    SetAlert("Create successfully.", "success");
-                    return RedirectToAction("Index", "OpenInventory");
-                }
-                else
-                {
-                    ModelState.AddModelError("", "Create failed.");
-                    return RedirectToAction("Create", "OpenInventory");
-                }
+                long id = new OpenInventoryDao().Insert(item);
+                
             }
-            return View(listOpenInventory);
+
+            return Json(new
+            {
+                status = true
+            });
         }
 
         
