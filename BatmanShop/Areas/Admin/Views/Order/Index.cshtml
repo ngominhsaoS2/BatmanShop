@@ -37,6 +37,7 @@
         <table class="table table-bordered">
             <thead>
                 <tr>
+                    <th>ID</th>
                     <th>CreatedDate</th>
                     <th>CustomerID</th>
                     <th>ShipName</th>
@@ -51,6 +52,7 @@
                 @foreach (var item in Model)
                 {
                     <tr id="row_@item.ID">
+                        <td>@item.ID</td>
                         <td>@item.CreatedDate</td>
                         <td>@item.CustomerID</td>
                         <td>@item.ShipName</td>
@@ -61,12 +63,7 @@
                         <td>
                             <a href="/Admin/Order/Edit/@item.ID">Edit</a>
                             |
-                            @Ajax.ActionLink("Delete", "Delete", new { @id = @item.ID }, new AjaxOptions
-                       {
-                           Confirm = "Do you really want to delete this row?",
-                           OnComplete = "$('#row_" + @item.ID + "').remove()",
-                           HttpMethod = "Delete"
-                       })
+                            <a href="/Admin/Order/Supply/@item.ID">Supply</a>
                         </td>
                     </tr>
                 }

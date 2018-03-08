@@ -303,6 +303,7 @@
     <Content Include="Assets\Admin\js\chartinator.js" />
     <Content Include="Assets\Admin\js\classie.js" />
     <Content Include="Assets\Admin\js\controller\openInventoryController.js" />
+    <Content Include="Assets\Admin\js\controller\orderController.js" />
     <Content Include="Assets\Admin\js\controller\searchController.js" />
     <Content Include="Assets\Admin\js\controller\productController.js" />
     <Content Include="Assets\Admin\js\custom.js" />
@@ -1501,6 +1502,7 @@
     <Content Include="Areas\Admin\Views\OpenInventory\Index.cshtml" />
     <Content Include="Areas\Admin\Views\OpenInventory\Create.cshtml" />
     <Content Include="Areas\Admin\Views\OpenInventory\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Order\Edit.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />

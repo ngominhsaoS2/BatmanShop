@@ -50,7 +50,6 @@ namespace Model.Dao
             try
             {
                 var order = db.Orders.Find(entity.ID);
-                order.CreatedDate = entity.CreatedDate;
                 order.CustomerID = entity.CustomerID;
                 order.ShipName = entity.ShipName;
                 order.ShipMobile = entity.ShipMobile;

@@ -37,6 +37,7 @@ namespace Model.EntityFramework
         public virtual DbSet<Banner> Banners { get; set; }
         public virtual DbSet<Warehouse> Warehouses { get; set; }
         public virtual DbSet<Action> Actions { get; set; }
+        public virtual DbSet<StatusCategory> StatusCategories { get; set; }
         public virtual DbSet<Inventory> Inventories { get; set; }
         public virtual DbSet<OpenInventory> OpenInventories { get; set; }
         public virtual DbSet<vOpenInventory> vOpenInventories { get; set; }

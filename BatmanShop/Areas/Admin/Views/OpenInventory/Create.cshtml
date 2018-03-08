@@ -42,66 +42,65 @@
 
 <h1>Create new Open Inventory</h1>
 </br>
-    <div class="form-horizontal">
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        <div class="form-group form-inline">
-            <label class="control-label col-md-2">WarehouseID</label>
-            <input class="form-control col-md-3" type="search" name="keyword" id="txtWarehouseID">
-            <label class="control-label col-md-1">Year</label>
-            <input class="form-control col-md-3" type="number" name="keyword" id="txtYear">
-            <label class="control-label col-md-1">Month</label>
-            @*<input class="form-control col-md-3" type="number" name="keyword" id="txtMonth">*@
-            <select class="form-control col-md-3" name="keyword" id="txtMonth">
-                <option value="Jan">January</option>
-                <option value="Feb">February</option>
-                <option value="Mar">March</option>
-                <option value="Apr">April</option>
-                <option value="May">May</option>
-                <option value="Jun">June</option>
-                <option value="Jul">July</option>
-                <option value="Aug">August</option>
-                <option value="Sep">September</option>
-                <option value="Oct">October</option>
-                <option value="Nov">November</option>
-                <option value="Dec">December</option>
-            </select>
-        </div>
-
-        <div class="form-group form-inline">
-            <label class="control-label col-md-2">ProductID</label>
-            <input class="form-control col-md-3" type="search" name="keyword" id="txtProductID">
-            <label class="control-label col-md-1">Quantity</label>
-            <input class="form-control col-md-3" type="number" name="keyword" id="txtQuantity">
-            <div class="col-md-2">
-                <button class="btn btn-primary" onclick="addNewRow()">Add</button>
-            </div> 
-        </div>
+<div class="form-horizontal">
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <div class="form-group form-inline">
+        <label class="control-label col-md-2">WarehouseID</label>
+        <input class="form-control col-md-3" type="search" name="keyword" id="txtWarehouseID">
+        <label class="control-label col-md-1">Year</label>
+        <input class="form-control col-md-3" type="number" name="keyword" id="txtYear">
+        <label class="control-label col-md-1">Month</label>
+        @*<input class="form-control col-md-3" type="number" name="keyword" id="txtMonth">*@
+        <select class="form-control col-md-3" name="keyword" id="txtMonth">
+            <option value="Jan">January</option>
+            <option value="Feb">February</option>
+            <option value="Mar">March</option>
+            <option value="Apr">April</option>
+            <option value="May">May</option>
+            <option value="Jun">June</option>
+            <option value="Jul">July</option>
+            <option value="Aug">August</option>
+            <option value="Sep">September</option>
+            <option value="Oct">October</option>
+            <option value="Nov">November</option>
+            <option value="Dec">December</option>
+        </select>
     </div>
 
-    <div class="tables">
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <button id="btnCreate" class="btn btn-default">Create</button>
-            </div>
-        </div>
-        <br />
-        <div class="table-responsive bs-example widget-shadow">
-            <table class="table table-bordered">
-                <thead>
-                    <tr>
-                        <th>WarehouseID</th>
-                        <th>Year</th>
-                        <th>Month</th>
-                        <th>ProductID</th>
-                        <th>Quantity</th>
-                        <th>Action</th>
-                    </tr>
-                </thead>
-                <tbody id="tableBody"></tbody>
-            </table>
+    <div class="form-group form-inline">
+        <label class="control-label col-md-2">ProductID</label>
+        <input class="form-control col-md-3" type="search" name="keyword" id="txtProductID">
+        <label class="control-label col-md-1">Quantity</label>
+        <input class="form-control col-md-3" type="number" name="keyword" id="txtQuantity">
+        <div class="col-md-2">
+            <button class="btn btn-primary" onclick="addNewRow()">Add</button>
         </div>
     </div>
-    
+</div>    
+
+<div class="tables">
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <button id="btnCreate" class="btn btn-default">Create</button>
+        </div>
+    </div>
+    <br />
+    <div class="table-responsive bs-example widget-shadow">
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>WarehouseID</th>
+                    <th>Year</th>
+                    <th>Month</th>
+                    <th>ProductID</th>
+                    <th>Quantity</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody id="tableBody"></tbody>
+        </table>
+    </div>
+</div>    
 
 <div>
     @Html.ActionLink("Back to List", "Index")

@@ -92,6 +92,7 @@ namespace BatmanShop.Controllers
         }
 
         //Đoạn này cũng copy nguyên từ bản master
+        //2018.03.07 giờ thì hiểu rồi nhé =)) ahihi
         public JsonResult DeleteAll()
         {
             Session[CartSession] = null;
@@ -134,7 +135,7 @@ namespace BatmanShop.Controllers
             order.ShipMobile = shipMobile;
             order.ShipAddress = shipAddress;
             order.ShipEmail = shipEmail;
-
+            order.Status = 3;
             try
             {
                 var id = new OrderDao().Insert(order);

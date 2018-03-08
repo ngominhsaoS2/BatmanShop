@@ -1,0 +1,98 @@
+﻿@model Model.EntityFramework.Order
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+    var orderDetail = (List<Model.ViewModel.OrderDetailViewModel>)ViewBag.OrderDetail;
+}
+
+@section jsFooter{
+    <script src="/Assets/Admin/js/controller/orderController.js"></script>
+    <script>
+        function deleteRow(i) {
+            var parent = document.getElementById("tableBody");
+            var child = document.getElementById(i);
+            parent.removeChild(child);
+        }
+    </script>    
+}
+
+<h2>Edit</h2>
+<br/>
+
+@using (Html.BeginForm("Edit", "Order", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+    <div class="form-horizontal">
+        <div class="form-group form-inline">
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <label class="control-label col-md-1">Name</label>
+            @Html.TextBoxFor(model => model.ShipName, new { @class = "form-control col-md-3", id = "txtShipName"})
+            <label class="control-label col-md-1">Mobile</label>
+            @Html.TextBoxFor(model => model.ShipMobile, new { @class = "form-control col-md-3", id = "txtShipMobile" })
+            <label class="control-label col-md-1">Address</label>
+            @Html.TextBoxFor(model => model.ShipAddress, new { @class = "form-control col-md-3", id = "txtShipAddress" })
+        </div>
+        <div class="form-group form-inline">
+            <label class="control-label col-md-1">Email</label>
+            @Html.TextBoxFor(model => model.ShipEmail, new { @class = "form-control col-md-3", id = "txtShipEmail" })
+            <label class="control-label col-md-1">Status</label>
+            @Html.DropDownListFor(model => model.Status, null, new { @class = "form-control col-md-3", id = "txtStatus" })
+            <div class="form-inline col-md-3">
+                <input type="submit" value="Save" class="btn btn-success" />
+            </div>
+        </div>
+    </div>
+}
+    
+<div class="form-horizontal">
+    <div class="form-group">
+        <div class="col-md-3">
+            <button class="btn btn-default" id="btnUpdate">Update</button>
+            <button class="btn btn-default">Add</button>
+        </div>
+    </div>
+    <div class="tables">
+        <div class="table-responsive bs-example widget-shadow">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>OrderID</th>
+                        <th>ProductID</th>
+                        <th>ProductCode</th>
+                        <th>Quantity</th>
+                        <th>Price</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody id="tableBody">
+                    @foreach (var item in orderDetail)
+            {
+                var buttonId = "button" + item.ProductID;
+                        <tr id="@item.ProductID">
+                            <td>@item.OrderID</td>
+                            <td>@item.ProductID</td>
+                            <td>@item.ProductCode</td>
+                            <td><input type="number" class="txtQuantity" data-id="@item.ProductID" value="@item.Quantity" /></td>
+                            <td>@item.Price.GetValueOrDefault(0).ToString("N0")</td>
+                            <td>
+                                @Ajax.ActionLink("Delete", "Delete", new { @orderId = @item.OrderID, @productId = @item.ProductID }, new AjaxOptions
+                           {
+                               Confirm = "Do you really want to delete this row?",
+                               OnComplete = "$('#" + @item.ProductID + "').remove()",
+                               HttpMethod = "Delete"
+                           })
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+    
+
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
