@@ -69,6 +69,32 @@
 
         });
 
+        $('#btnAddRow').off('click').on('click', function () {
+            var orderId = $("td:first").text();
+            var productId = $("#txtProductID").val();
+            var quantity = $("#txtQuantity").val();
+            var price = $("#txtPrice").val();
+            //Update vào database
+            var row = {"OrderID": orderId, "ProductID": productId, "Quantity": quantity, "Price": price};
+
+            $.ajax({
+                url: '/Order/AddRow',
+                data: { row: JSON.stringify(row) },
+                dataType: 'json',
+                type: 'POST',
+                success: function (res) {
+                    if (res.status == true) {
+                        alert("Add order detail row successfully");
+                        window.location.reload();
+                    }
+                    else {
+                        alert("Add order detail row failed");
+                    }
+                }
+            })
+
+        });
+
     }
 }
 orderDetail.init();

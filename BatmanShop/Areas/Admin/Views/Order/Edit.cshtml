@@ -8,6 +8,14 @@
 
 @section jsFooter{
     <script src="/Assets/Admin/js/controller/orderController.js"></script>
+    <script src="/Assets/Admin/js/controller/searchController.js"></script>
+    <script>
+        $(document).ready(function () {
+            $("#btnAdd").click(function () {
+                $("#addRow").toggle();
+            });
+        });
+    </script>
 }
 
 <h2>Edit</h2>
@@ -40,10 +48,20 @@
     
 <div class="form-horizontal">
     <div class="form-group">
-        <div class="col-md-3">
+        <div class="col-md-2">
             <button class="btn btn-primary" id="btnUpdate">Update</button>
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">Add</button>
+            <button type="button" class="btn btn-primary" id="btnAdd">Add</button>
         </div>
+    <div class="form-group form-inline" id="addRow" hidden>
+        <label class="control-label">ProductID</label>
+        <input type="search" class="form-control" id="txtProductID" />
+        <label class="control-label">Quantity</label>
+        <input type="number" class="form-control" id="txtQuantity"/>
+        <label class="control-label">Price</label>
+        <input type="number" class="form-control" id="txtPrice" />
+        <button type="button" class="btn btn-success" id="btnAddRow">Add row</button>
+    </div>
+          
     </div>
     <div class="tables">
         <div class="table-responsive bs-example widget-shadow">
@@ -80,30 +98,6 @@
                     }
                 </tbody>
             </table>
-        </div>
-    </div>
-</div>
-    
-<!-- The Modal -->
-<div class="modal fade" id="myModal">
-    <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-
-            <!-- Modal Header -->
-            <div class="modal-header">
-                <h4 class="modal-title">Add a new Order row</h4>
-            </div>
-
-            <!-- Modal body -->
-            <div class="modal-body">
-                Modal body..
-            </div>
-
-            <!-- Modal footer -->
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            </div>
-
         </div>
     </div>
 </div>

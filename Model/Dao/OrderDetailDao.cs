@@ -121,6 +121,19 @@ namespace Model.Dao
         }
 
 
+        public bool CheckExistRow(long orderId, long productId)
+        {
+            var count = db.OrderDetails.Where(x => x.OrderID == orderId && x.ProductID == productId).Count();
+            if(count > 0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+
+        }
 
 
 
