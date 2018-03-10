@@ -40,7 +40,8 @@ namespace Model.EntityFramework
         public virtual DbSet<StatusCategory> StatusCategories { get; set; }
         public virtual DbSet<Inventory> Inventories { get; set; }
         public virtual DbSet<OpenInventory> OpenInventories { get; set; }
-        public virtual DbSet<vOpenInventory> vOpenInventories { get; set; }
+        public virtual DbSet<OpenInventoryViewModel> vOpenInventories { get; set; }
+        public virtual DbSet<InventoryViewModel> vInventories { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

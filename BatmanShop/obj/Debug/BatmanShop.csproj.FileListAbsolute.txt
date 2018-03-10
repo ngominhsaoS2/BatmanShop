@@ -167,6 +167,6 @@ E:\WORK\GITHUB\BatmanShop\BatmanShop\bin\Microsoft.Owin.Security.OAuth.xml
 E:\WORK\GITHUB\BatmanShop\BatmanShop\bin\Microsoft.Owin.Security.Google.xml
 E:\WORK\GITHUB\BatmanShop\BatmanShop\bin\Microsoft.Owin.Security.Twitter.xml
 E:\WORK\GITHUB\BatmanShop\BatmanShop\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
-E:\WORK\GITHUB\BatmanShop\BatmanShop\obj\Debug\BatmanShop.csprojResolveAssemblyReference.cache
 E:\WORK\GITHUB\BatmanShop\BatmanShop\obj\Debug\BatmanShop.dll
 E:\WORK\GITHUB\BatmanShop\BatmanShop\obj\Debug\BatmanShop.pdb
+E:\WORK\GITHUB\BatmanShop\BatmanShop\obj\Debug\BatmanShop.csprojResolveAssemblyReference.cache

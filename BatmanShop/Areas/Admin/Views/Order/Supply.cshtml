@@ -1,0 +1,95 @@
+﻿@model Model.EntityFramework.Order
+
+@{
+    ViewBag.Title = "Supply";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+    var inventory = (List<Model.ViewModel.InventoryViewModel>)ViewBag.Inventory;
+}
+
+@section jsFooter{
+    <script src="/Assets/Admin/js/controller/orderController.js"></script>
+    <script src="/Assets/Admin/js/controller/searchController.js"></script>
+    <script>
+        var crit = $("#txtStatus").val();
+        if (crit != 3) {
+            $("#divWareUpdate").hide();
+        }
+        else {
+            $("#divWareUpdate").show();
+        }
+    </script>
+}
+
+<h2>Supply</h2>
+<br/>
+
+@using (Html.BeginForm("Supply", "Order", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+    <div class="form-horizontal">
+        <div class="form-group form-inline">
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <label class="control-label col-md-1">Name</label>
+            @Html.TextBoxFor(model => model.ShipName, new { @class = "form-control col-md-3", id = "txtShipName", value = Model.ShipName, @readonly = "readonly" })
+            <label class="control-label col-md-1">Mobile</label>
+            @Html.TextBoxFor(model => model.ShipMobile, new { @class = "form-control col-md-3", id = "txtShipMobile", value = Model.ShipMobile, @readonly = "readonly" })
+            <label class="control-label col-md-1">Address</label>
+            @Html.TextBoxFor(model => model.ShipAddress, new { @class = "form-control col-md-3", id = "txtShipAddress", value = Model.ShipAddress, @readonly = "readonly" })
+        </div>
+        <div class="form-group form-inline">
+            <label class="control-label col-md-1">Email</label>
+            @Html.TextBoxFor(model => model.ShipEmail, new { @class = "form-control col-md-3", id = "txtShipEmail", value = Model.ShipEmail, @readonly = "readonly" })
+            <label class="control-label col-md-1">Status</label>
+            @Html.DropDownListFor(model => model.Status, null, new { @class = "form-control col-md-3", id = "txtStatus" })
+            <div class="form-inline col-md-3">
+                <input type="submit" value="Supply" class="btn btn-success" />
+            </div>
+        </div>
+    </div>
+}
+    
+<div class="form-horizontal">
+    <div class="form-group form-inline" id="divWareUpdate">
+        <label class="control-label col-md-1" >Ware</label>
+        <input class="form-control col-md-3" type="search" name="keyword" id="txtWarehouseID">
+        <div class="form-inline col-md-3">
+            <button class="btn btn-default" id="btnWareUpdate">Update</button>
+        </div>
+    </div>
+    <div class="tables">
+        <div class="table-responsive bs-example widget-shadow">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>OrderID</th>
+                        <th>ProductID</th>
+                        <th>ProductCode</th>
+                        <th>Quantity</th>
+                        <th>WarehouseID</th>
+                        <th>WarehouseCode</th>
+                    </tr>
+                </thead>
+                <tbody id="tableBody">
+                    @foreach (var item in inventory)
+                    {
+                        var buttonId = "button" + item.ProductID;
+                        <tr id="@item.ProductID">
+                            <td class="txtWarehouseId">@item.OrderID</td>
+                            <td>@item.ProductID</td>
+                            <td>@item.ProductCode</td>
+                            <td>@item.Quantity</td>
+                            <td>@item.WarehouseID</td>
+                            <td>@item.WarehouseCode</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+    
+
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>

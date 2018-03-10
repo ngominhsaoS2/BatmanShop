@@ -118,9 +118,9 @@ namespace Model.Dao
         /// <param name="page"></param>
         /// <param name="pageSize"></param>
         /// <returns></returns>
-        public IEnumerable<vOpenInventory> ListAllPaging(string searchString, int page, int pageSize, string month, int? warehouseId = null, int? year = null)
+        public IEnumerable<OpenInventoryViewModel> ListAllPaging(string searchString, int page, int pageSize, string month, int? warehouseId = null, int? year = null)
         {
-            IQueryable<vOpenInventory> model = db.vOpenInventories;
+            IQueryable<OpenInventoryViewModel> model = db.vOpenInventories;
             if (!string.IsNullOrEmpty(searchString))
             {
                 model = model.Where(x => x.WarehouseCode.Contains(searchString) || x.WarehouseName.Contains(searchString)

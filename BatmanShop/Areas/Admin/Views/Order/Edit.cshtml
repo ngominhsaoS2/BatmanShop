@@ -8,13 +8,6 @@
 
 @section jsFooter{
     <script src="/Assets/Admin/js/controller/orderController.js"></script>
-    <script>
-        function deleteRow(i) {
-            var parent = document.getElementById("tableBody");
-            var child = document.getElementById(i);
-            parent.removeChild(child);
-        }
-    </script>    
 }
 
 <h2>Edit</h2>
@@ -48,8 +41,8 @@
 <div class="form-horizontal">
     <div class="form-group">
         <div class="col-md-3">
-            <button class="btn btn-default" id="btnUpdate">Update</button>
-            <button class="btn btn-default">Add</button>
+            <button class="btn btn-primary" id="btnUpdate">Update</button>
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">Add</button>
         </div>
     </div>
     <div class="tables">
@@ -91,7 +84,29 @@
     </div>
 </div>
     
+<!-- The Modal -->
+<div class="modal fade" id="myModal">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
 
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <h4 class="modal-title">Add a new Order row</h4>
+            </div>
+
+            <!-- Modal body -->
+            <div class="modal-body">
+                Modal body..
+            </div>
+
+            <!-- Modal footer -->
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+
+        </div>
+    </div>
+</div>
 
 <div>
     @Html.ActionLink("Back to List", "Index")

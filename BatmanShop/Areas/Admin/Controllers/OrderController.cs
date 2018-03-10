@@ -58,9 +58,59 @@ namespace BatmanShop.Areas.Admin.Controllers
         }
 
         //Suplly an Order
+        [HttpGet]
+        public ActionResult Supply(long id)
+        {
+            var order = new OrderDao().GetByID(id);
+            var inventory = new InventoryDao().ListInventoryViewByOrderId(id);
+            ViewBag.Inventory = inventory;
+            SetStatusViewBag();
+            return View(order);
+        }
 
+        [HttpPost]
+        public ActionResult Supply(Order order)
+        {
+            if (ModelState.IsValid)
+            {
+                //Đổi trạng thái của Order về 3: Supplied
+                order.Status = new OrderDao().ChangeStatus(order.ID, 3);
+                var detailList = new OrderDetailDao().ListDetailByOrderId(order.ID);
+                var invent = new Inventory();
+                var dao = new InventoryDao();
 
-        public JsonResult UpdateRow(string cartModel, long orderId)
+                if(dao.ListInventoryByOrderId(order.ID).Count() == 0)
+                {
+                    foreach (var item in detailList)
+                    {
+                        invent.ActionID = 2;
+                        invent.Date = invent.CreatedDate = invent.ModifiedDate = DateTime.Now;
+                        invent.OrderID = item.OrderID;
+                        invent.ProductID = item.ProductID;
+                        invent.Quantity = item.Quantity;
+                        invent.Status = true;
+                        var id = dao.Insert(invent);
+                    }
+                }
+                
+
+                if (order.Status == 3)
+                {
+                    SetAlert("Supply this order successfully.", "success");
+                }
+                else
+                {
+                    ModelState.AddModelError("", "Supply this order failed.");
+                }
+
+            }
+            var inventory = new InventoryDao().ListInventoryViewByOrderId(order.ID);
+            ViewBag.Inventory = inventory;
+            SetStatusViewBag(order.Status);
+            return View(order);
+        }
+
+        public JsonResult UpdateQuantity(string cartModel, long orderId)
         {
             var jsonCart = new JavaScriptSerializer().Deserialize<List<CartItem>>(cartModel);
             var listCartItem = (List<CartItem>)this.ListCartItemByOrderId(orderId);
@@ -84,6 +134,53 @@ namespace BatmanShop.Areas.Admin.Controllers
                 orderDetail.Quantity = item.Quantity;
                 orderDetail.Price = item.Product.Price;
                 detailDao.Update(orderDetail);
+            }
+
+            return Json(new
+            {
+                status = true
+            });
+        }
+
+        public JsonResult UpdateWarehouseID(string list)
+        {
+            var json = new JavaScriptSerializer().Deserialize<List<Inventory>>(list);
+            var listInventory = new InventoryDao().ListInventoryByOrderId(json[0].OrderID);
+            var dao = new InventoryDao();
+            Inventory inventory = new Inventory();
+
+            if (listInventory.Count() > 0)
+            {
+                foreach (var item in json)
+                {
+                    var rem = listInventory.Single(x => x.ProductID == item.ProductID);
+                    item.ID = rem.ID;
+                    listInventory.Remove(rem);
+                    listInventory.Add(item);
+                }
+
+                foreach (var item in listInventory)
+                {
+                    inventory.ID = item.ID;
+                    inventory.OrderID = item.OrderID;
+                    inventory.ProductID = item.ProductID;
+                    inventory.Quantity = item.Quantity;
+                    inventory.WarehouseID = item.WarehouseID;
+                    dao.Update(inventory);
+                }
+
+            }
+            else
+            {
+                foreach (var item in json)
+                {
+                    listInventory.Add(item);
+                }
+
+                foreach (var item in listInventory)
+                {
+                    dao.Insert(item);
+                }
             }
 
             return Json(new

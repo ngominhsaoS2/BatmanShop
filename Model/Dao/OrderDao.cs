@@ -85,6 +85,21 @@ namespace Model.Dao
             }
         }
 
+        public int ChangeStatus(long orderId, int status)
+        {
+            try
+            {
+                var order = db.Orders.Find(orderId);
+                order.Status = status;
+                db.SaveChanges();
+                return status;
+            }
+            catch (Exception ex)
+            {
+                return 0;
+            }
+        }
+
         /// <summary>
         /// List Order into a table with search string - Liệt kê danh sách Order có thể sử dụng tìm kiếm search
         /// </summary>

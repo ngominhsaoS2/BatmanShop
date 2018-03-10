@@ -15,6 +15,8 @@ namespace Model.EntityFramework
 
         public DateTime? Date { get; set; }
 
+        public long OrderID { get; set; }
+
         public long WarehouseID { get; set; }
 
         public long ProductID { get; set; }

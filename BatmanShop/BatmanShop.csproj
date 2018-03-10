@@ -1503,6 +1503,7 @@
     <Content Include="Areas\Admin\Views\OpenInventory\Create.cshtml" />
     <Content Include="Areas\Admin\Views\OpenInventory\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\Order\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Order\Supply.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
