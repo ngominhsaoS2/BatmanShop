@@ -14,7 +14,7 @@ namespace BatmanShop.Areas.Admin.Controllers
 {
     public class ProductController : BaseController
     {
-        ////Display, create, edit, delete User
+        ////Display, create, edit, delete Product
         //Index page of Product management
         public ActionResult Index(string searchString, int page = 1, int pageSize = 10)
         {

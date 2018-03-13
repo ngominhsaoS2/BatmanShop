@@ -11,7 +11,7 @@ namespace BatmanShop.Areas.Admin.Controllers
 {
     public class OpenInventoryController : BaseController
     {
-        ////Display, create, edit, delete User
+        ////Display, create, edit, delete OpenInventory
         //Index page of OpenInventory management
         public ActionResult Index(string searchString, string month, int page = 1, int pageSize = 10, int? year = null, int? warehouseId = null )
         {

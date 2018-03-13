@@ -27,16 +27,6 @@ namespace Model.Dao
             return db.Inventories.Find(id);
         }
 
-        /// <summary>
-        /// Get Inventory when having ActionID, OrderID, ProductID
-        /// </summary>
-        /// <param name="id"></param>
-        /// <returns></returns>
-        public Inventory GetBy(long actionID, long orderID, long productID)
-        {
-            return db.Inventories.SingleOrDefault(x => x.ActionID == actionID && x.OrderID == orderID && x.ProductID == productID);
-        }
-
         public List<Inventory> ListInventoryByOrderId(long orderId)
         {
             return db.Inventories.Where(x => x.OrderID == orderId).ToList();
@@ -55,6 +45,7 @@ namespace Model.Dao
         public long Insert(Inventory entity)
         {
             entity.CreatedDate = entity.ModifiedDate = DateTime.Now;
+            entity.Status = true;
             db.Inventories.Add(entity);
             db.SaveChanges();
             return entity.ID;
@@ -70,14 +61,13 @@ namespace Model.Dao
             try
             {
                 var inventory = db.Inventories.Find(entity.ID);
-                inventory.ActionID = entity.ActionID;
                 inventory.Date = entity.Date;
                 inventory.OrderID = entity.OrderID;
                 inventory.WarehouseID = entity.WarehouseID;
                 inventory.ProductID = entity.ProductID;
                 inventory.Quantity = entity.Quantity;
                 inventory.ModifiedDate = DateTime.Now;
-                inventory.Status = entity.Status;
+                inventory.Status = true;
                 db.SaveChanges();
                 return true;
             }
@@ -87,11 +77,32 @@ namespace Model.Dao
             }
         }
 
+        public void UpdateQuantity(string docCode, string docNo, long warehouseId, long productId, int quantity)
+        {
+            var detail = db.Inventories.Single(x => x.DocCode == docCode && x.DocNo == docNo && x.WarehouseID == warehouseId && x.ProductID == productId);
+            detail.Quantity = quantity;
+            db.SaveChanges();
+        }
 
+        public bool CheckExist(string docCode, string docNo, long warehouseId, long productId)
+        {
+            var detail = db.Inventories.Count(x => x.DocCode == docCode && x.DocNo == docNo && x.WarehouseID == warehouseId && x.ProductID == productId);
+            if (detail > 0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
 
-
-
-
+        public void RemoveDetail(string docNo)
+        {
+            var list = db.Inventories.Where(x => x.DocNo.Contains(docNo)).ToList();
+            db.Inventories.RemoveRange(list);
+            db.SaveChanges();
+        }
 
 
 

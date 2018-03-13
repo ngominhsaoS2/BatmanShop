@@ -35,6 +35,7 @@ namespace Model.Dao
         public long Insert(Warehouse entity)
         {
             entity.CreatedDate = entity.ModifiedDate = DateTime.Now;
+            entity.Status = true;
             db.Warehouses.Add(entity);
             db.SaveChanges();
             return entity.ID;
@@ -58,7 +59,7 @@ namespace Model.Dao
                 warehouse.Description = entity.Description;
                 warehouse.Image = entity.Image;
                 warehouse.ModifiedDate = DateTime.Now;
-                warehouse.Status = entity.Status;
+                warehouse.Status = true;
                 db.SaveChanges();
                 return true;
             }

@@ -42,6 +42,8 @@ namespace Model.EntityFramework
         public virtual DbSet<OpenInventory> OpenInventories { get; set; }
         public virtual DbSet<OpenInventoryViewModel> vOpenInventories { get; set; }
         public virtual DbSet<InventoryViewModel> vInventories { get; set; }
+        public virtual DbSet<AccDoc> AccDocs { get; set; }
+        public virtual DbSet<AccDocDetail> AccDocDetails { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

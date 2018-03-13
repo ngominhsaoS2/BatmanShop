@@ -36,6 +36,7 @@ namespace Model.Dao
         public long Insert(OpenInventory entity)
         {
             entity.CreatedDate = entity.ModifiedDate = DateTime.Now;
+            entity.Status = true;
             db.OpenInventories.Add(entity);
             db.SaveChanges();
             return entity.ID;
@@ -81,7 +82,7 @@ namespace Model.Dao
                 openInventory.ProductID = entity.ProductID;
                 openInventory.Quantity = entity.Quantity;
                 openInventory.ModifiedDate = DateTime.Now;
-                openInventory.Status = entity.Status;
+                openInventory.Status = true;
                 db.SaveChanges();
                 return true;
             }

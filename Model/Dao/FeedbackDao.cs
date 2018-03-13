@@ -34,8 +34,8 @@ namespace Model.Dao
         /// <returns></returns>
         public long Insert(Feedback entity)
         {
-            entity.Status = true;
             entity.CreatedDate = DateTime.Now;
+            entity.Status = true;
             db.Feedbacks.Add(entity);
             db.SaveChanges();
             return entity.ID;

@@ -1,0 +1,64 @@
+﻿@model Model.EntityFramework.AccDoc
+
+@{
+    ViewBag.Title = "ImportCreate";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+    var docNo = ViewBag.DocNo;
+}
+
+@section jsFooter{
+    <script src="/Assets/Admin/js/controller/searchController.js"></script>
+    <script src="/Assets/Admin/js/controller/inventoryController.js"></script>
+}
+
+<h1>Import Inventory</h1>
+</br>
+
+<div class="form-horizontal">
+@using (Html.BeginForm("ImportCreate", "Inventory", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+    <div class="form-group form-inline">
+        @Html.ValidationSummary(false, "", new { @class = "text-danger" })
+        <label class="control-label col-md-2">DocCode</label>
+        @Html.TextBoxFor(model => model.DocCode, new { @class = "form-control col-md-3", type = "search", id = "txtDocCode", @readonly= "readonly", Value = "IM"})
+        <label class="control-label col-md-1">DocNo</label>
+        @Html.TextBoxFor(model => model.DocNo, new { @class = "form-control col-md-3", type = "text", id = "txtDocNo", @readonly = "readonly", Value = docNo })
+        <label class="control-label col-md-1">Date</label>
+        @Html.TextBoxFor(model => model.Date, new { @class = "form-control col-md-3", type = "text", id = "txtDate" })
+        <div class="col-md-1">
+            <button id="btnCreate" class="btn btn-success">Create ticket</button>
+        </div>
+    </div>
+}
+    <div class="form-group form-inline" id="addDetail">
+        <label class="control-label col-md-2">WarehouseID</label>
+        <input class="form-control col-md-3" type="search" id="txtWarehouseID">
+        <label class="control-label col-md-1">ProducID</label>
+        <input class="form-control col-md-3" type="search" id="txtProductID">
+        <label class="control-label col-md-1">Quantity</label>
+        <input class="form-control col-md-3" type="number" id="txtQuantity">
+        <div class="col-md-2">
+            <button class="btn btn-primary" onclick="addNewRow()">Add</button>
+            <button class="btn btn-success" id="btnSave">Save</button>
+        </div>
+    </div>
+
+    
+</div>
+    
+<div class="tables">
+    <div class="table-responsive bs-example widget-shadow">
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>WarehouseID</th>
+                    <th>ProducID</th>
+                    <th>Quantity</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody id="tableBody"></tbody>
+        </table>
+    </div>
+</div>

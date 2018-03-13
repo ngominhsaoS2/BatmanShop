@@ -29,5 +29,15 @@ namespace BatmanShop.Common
 
             return strBuilder.ToString();
         }
+
+        
+
+
+
+
+
+
+
+
     }
 }

@@ -59,6 +59,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Dao\AccDocDao.cs" />
+    <Compile Include="Dao\AccDocDetailDao.cs" />
     <Compile Include="Dao\BannerDao.cs" />
     <Compile Include="Dao\ContactDao.cs" />
     <Compile Include="Dao\ContentCategoryDao.cs" />
@@ -79,6 +81,8 @@
     <Compile Include="Dao\UserGroupDao.cs" />
     <Compile Include="Dao\WarehouseDao.cs" />
     <Compile Include="EntityFramework\About.cs" />
+    <Compile Include="EntityFramework\AccDoc.cs" />
+    <Compile Include="EntityFramework\AccDocDetail.cs" />
     <Compile Include="EntityFramework\Action.cs" />
     <Compile Include="EntityFramework\Banner.cs" />
     <Compile Include="EntityFramework\BatmanShopDbContext.cs" />

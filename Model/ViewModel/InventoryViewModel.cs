@@ -14,10 +14,11 @@ namespace Model.ViewModel
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public long ID { get; set; }
 
-        public long? ActionID { get; set; }
+        [StringLength(2)]
+        public string DocCode { get; set; }
 
-        [StringLength(250)]
-        public string ActionName { get; set; }
+        [StringLength(16)]
+        public string DocNo { get; set; }
 
         public DateTime? Date { get; set; }
 

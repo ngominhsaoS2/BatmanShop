@@ -35,6 +35,7 @@ namespace Model.Dao
         public long Insert(Banner entity)
         {
             entity.CreatedDate = entity.ModifiedDate = DateTime.Now;
+            entity.Status = true;
             db.Banners.Add(entity);
             db.SaveChanges();
             return entity.ID;
@@ -54,7 +55,7 @@ namespace Model.Dao
                 banner.Image = entity.Image;
                 banner.Description = entity.Description;
                 banner.ModifiedDate = DateTime.Now;
-                banner.Status = entity.Status;
+                banner.Status = true;
                 db.SaveChanges();
                 return true;
             }

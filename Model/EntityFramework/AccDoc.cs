@@ -6,8 +6,8 @@ using System.Data.Entity.Spatial;
 
 namespace Model.EntityFramework
 {
-    [Table("Inventory")]
-    public partial class Inventory
+    [Table("AccDoc")]
+    public partial class AccDoc
     {
         public long ID { get; set; }
 
@@ -17,15 +17,8 @@ namespace Model.EntityFramework
         [StringLength(16)]
         public string DocNo { get; set; }
 
+        [Required]
         public DateTime? Date { get; set; }
-
-        public long OrderID { get; set; }
-
-        public long WarehouseID { get; set; }
-
-        public long ProductID { get; set; }
-
-        public int? Quantity { get; set; }
 
         public DateTime? CreatedDate { get; set; }
 
@@ -38,6 +31,7 @@ namespace Model.EntityFramework
         public string ModifiedBy { get; set; }
 
         public bool Status { get; set; }
+
 
 
     }

@@ -6,8 +6,8 @@ using System.Data.Entity.Spatial;
 
 namespace Model.EntityFramework
 {
-    [Table("Inventory")]
-    public partial class Inventory
+    [Table("AccDocDetail")]
+    public partial class AccDocDetail
     {
         public long ID { get; set; }
 
@@ -17,13 +17,11 @@ namespace Model.EntityFramework
         [StringLength(16)]
         public string DocNo { get; set; }
 
-        public DateTime? Date { get; set; }
-
-        public long OrderID { get; set; }
-
         public long WarehouseID { get; set; }
 
         public long ProductID { get; set; }
+
+        public decimal? Price { get; set; }
 
         public int? Quantity { get; set; }
 

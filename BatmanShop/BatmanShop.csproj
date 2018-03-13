@@ -221,6 +221,7 @@
     <Compile Include="Areas\Admin\Controllers\ContentController.cs" />
     <Compile Include="Areas\Admin\Controllers\FeedbackController.cs" />
     <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
+    <Compile Include="Areas\Admin\Controllers\InventoryController.cs" />
     <Compile Include="Areas\Admin\Controllers\LoginController.cs" />
     <Compile Include="Areas\Admin\Controllers\OpenInventoryController.cs" />
     <Compile Include="Areas\Admin\Controllers\OrderController.cs" />
@@ -302,6 +303,7 @@
     <Content Include="Assets\Admin\js\Chart.min.js" />
     <Content Include="Assets\Admin\js\chartinator.js" />
     <Content Include="Assets\Admin\js\classie.js" />
+    <Content Include="Assets\Admin\js\controller\inventoryController.js" />
     <Content Include="Assets\Admin\js\controller\openInventoryController.js" />
     <Content Include="Assets\Admin\js\controller\orderController.js" />
     <Content Include="Assets\Admin\js\controller\searchController.js" />
@@ -1504,6 +1506,9 @@
     <Content Include="Areas\Admin\Views\OpenInventory\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\Order\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\Order\Supply.cshtml" />
+    <Content Include="Areas\Admin\Views\Inventory\ImportCreate.cshtml" />
+    <Content Include="Areas\Admin\Views\Inventory\ImportIndex.cshtml" />
+    <Content Include="Areas\Admin\Views\Inventory\ImportEdit.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />

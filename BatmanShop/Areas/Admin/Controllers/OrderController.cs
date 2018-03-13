@@ -83,7 +83,6 @@ namespace BatmanShop.Areas.Admin.Controllers
                 {
                     foreach (var item in detailList)
                     {
-                        invent.ActionID = 2;
                         invent.Date = invent.CreatedDate = invent.ModifiedDate = DateTime.Now;
                         invent.OrderID = item.OrderID;
                         invent.ProductID = item.ProductID;

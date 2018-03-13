@@ -35,6 +35,7 @@ namespace Model.Dao
         public long Insert(Content entity)
         {
             entity.CreatedDate = entity.ModifiedDate = DateTime.Now;
+            entity.Status = true;
             db.Contents.Add(entity);
             db.SaveChanges();
             return entity.ID;
@@ -63,7 +64,7 @@ namespace Model.Dao
                 content.MetaKeywords = entity.MetaKeywords;
                 content.MetaDescriptions = entity.MetaDescriptions;
                 content.ModifiedDate = DateTime.Now;
-                content.Status = entity.Status;
+                content.Status = true;
                 db.SaveChanges();
                 return true;
             }

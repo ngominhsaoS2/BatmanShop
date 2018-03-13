@@ -35,6 +35,7 @@ namespace Model.Dao
         public long Insert(Slide entity)
         {
             entity.CreatedDate = entity.ModifiedDate = DateTime.Now;
+            entity.Status = true;
             db.Slides.Add(entity);
             db.SaveChanges();
             return entity.ID;
@@ -56,7 +57,7 @@ namespace Model.Dao
                 slide.Link = entity.Link;
                 slide.Description = entity.Description;
                 slide.ModifiedDate = DateTime.Now;
-                slide.Status = entity.Status;
+                slide.Status = true;
                 db.SaveChanges();
                 return true;
             }

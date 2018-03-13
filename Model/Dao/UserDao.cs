@@ -46,6 +46,7 @@ namespace Model.Dao
         public long Insert (User entity)
         {
             entity.CreatedDate = entity.ModifiedDate = DateTime.Now;
+            entity.Status = true;
             db.Users.Add(entity);
             db.SaveChanges();
             return entity.ID;
@@ -73,7 +74,7 @@ namespace Model.Dao
                 user.Phone = entity.Phone;
                 user.ModifiedDate = DateTime.Now;
                 user.Image = entity.Image;
-                user.Status = entity.Status;
+                user.Status = true;
                 db.SaveChanges();
                 return true;
             }

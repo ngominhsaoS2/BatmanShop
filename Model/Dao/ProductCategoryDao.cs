@@ -48,6 +48,7 @@ namespace Model.Dao
         public long Insert(ProductCategory entity)
         {
             entity.CreatedDate = entity.ModifiedDate = DateTime.Now;
+            entity.Status = true;
             db.ProductCategories.Add(entity);
             db.SaveChanges();
             return entity.ID;
@@ -73,7 +74,7 @@ namespace Model.Dao
                 productCategory.MetaDescriptions = entity.MetaDescriptions;
                 productCategory.ShowInHome = entity.ShowInHome;
                 productCategory.ModifiedDate = DateTime.Now;
-                productCategory.Status = entity.Status;
+                productCategory.Status = true;
                 db.SaveChanges();
                 return true;
             }
