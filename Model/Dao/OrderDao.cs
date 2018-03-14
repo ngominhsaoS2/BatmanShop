@@ -1,4 +1,5 @@
-﻿using Model.EntityFramework;
+﻿using Common;
+using Model.EntityFramework;
 using PagedList;
 using System;
 using System.Collections.Generic;
@@ -118,7 +119,13 @@ namespace Model.Dao
             return model.OrderByDescending(x => x.CreatedDate).ToPagedList(page, pageSize);
         }
 
-
+        public string UpdateDocNo(string docCode, long id)
+        {
+            var order = db.Orders.Find(id);
+            order.DocNo = AccDocHelp.CreateDocNo(docCode, id);
+            db.SaveChanges();
+            return order.DocNo;
+        }
 
 
 

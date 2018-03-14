@@ -1,4 +1,5 @@
 ﻿using BatmanShop.Models;
+using Common;
 using Model.Dao;
 using Model.EntityFramework;
 using Model.ViewModel;
@@ -75,20 +76,24 @@ namespace BatmanShop.Areas.Admin.Controllers
             {
                 //Đổi trạng thái của Order về 3: Supplied
                 order.Status = new OrderDao().ChangeStatus(order.ID, 3);
+
                 var detailList = new OrderDetailDao().ListDetailByOrderId(order.ID);
                 var invent = new Inventory();
                 var dao = new InventoryDao();
 
+                //Insert vào bảng Inventory
                 if(dao.ListInventoryByOrderId(order.ID).Count() == 0)
                 {
                     foreach (var item in detailList)
                     {
-                        invent.Date = invent.CreatedDate = invent.ModifiedDate = DateTime.Now;
                         invent.OrderID = item.OrderID;
+                        invent.DocCode = "OR";
+                        invent.Date = DateTime.Now;
                         invent.ProductID = item.ProductID;
                         invent.Quantity = item.Quantity;
                         invent.Status = true;
                         var id = dao.Insert(invent);
+                        invent.DocNo = dao.UpdateDocNo("OR", id, order.ID);
                     }
                 }
                 
@@ -165,6 +170,7 @@ namespace BatmanShop.Areas.Admin.Controllers
                     inventory.ProductID = item.ProductID;
                     inventory.Quantity = item.Quantity;
                     inventory.WarehouseID = item.WarehouseID;
+                    inventory.Date = DateTime.Now;
                     dao.Update(inventory);
                 }
 

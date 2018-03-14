@@ -1,4 +1,5 @@
-﻿using Model.EntityFramework;
+﻿using Common;
+using Model.EntityFramework;
 using Model.ViewModel;
 using System;
 using System.Collections.Generic;
@@ -104,7 +105,13 @@ namespace Model.Dao
             db.SaveChanges();
         }
 
-
+        public string UpdateDocNo(string docCode, long id, long orderId)
+        {
+            var invent = db.Inventories.Find(id);
+            invent.DocNo = AccDocHelp.CreateDocNo(docCode, orderId);
+            db.SaveChanges();
+            return invent.DocNo;
+        }
 
 
 
