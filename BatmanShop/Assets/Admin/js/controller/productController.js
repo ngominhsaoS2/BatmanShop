@@ -53,6 +53,7 @@ var product = {
             });
         });
     },
+
     loadImages: function () {
         $.ajax({
             url: '/Admin/Product/LoadImages',
