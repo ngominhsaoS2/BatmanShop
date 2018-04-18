@@ -11,6 +11,9 @@ namespace Model.EntityFramework
     {
         public long ID { get; set; }
 
+        [StringLength(16)]
+        public string DocNo { get; set; }
+
         public DateTime? CreatedDate { get; set; }
 
         public long? CustomerID { get; set; }

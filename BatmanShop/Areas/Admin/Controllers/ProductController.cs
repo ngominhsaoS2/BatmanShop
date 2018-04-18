@@ -164,6 +164,7 @@ namespace BatmanShop.Areas.Admin.Controllers
                 {
                     listImagesReturn.Add(element.Value);
                 }
+
                 return Json(new
                 {
                     data = listImagesReturn

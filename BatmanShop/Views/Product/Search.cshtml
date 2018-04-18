@@ -2,7 +2,11 @@
 
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
+    var keyword = ViewBag.Keyword;
 }
+<div class="container">
+    <h3>Result for "@keyword"</h3>
+</div>
 
 <div class="product-grids">
     <div class="container">
@@ -20,8 +24,6 @@
                                 <label>$@(item.Price.HasValue ? item.Price.Value.ToString("N0") : "Contact us")</label>
                                 <a href="/Add-To-Cart?productId=@item.ID&quantity=1" class="store">ADD TO CART</a>
                             </div>
-
-                            <b class="plus-on">+</b>
                         </div>
                     </div>
                 }

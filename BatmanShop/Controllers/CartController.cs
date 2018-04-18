@@ -135,10 +135,12 @@ namespace BatmanShop.Controllers
             order.ShipMobile = shipMobile;
             order.ShipAddress = shipAddress;
             order.ShipEmail = shipEmail;
-            order.Status = 3;
+            order.Status = 2;
             try
             {
-                var id = new OrderDao().Insert(order);
+                var dao = new OrderDao();
+                var id = dao.Insert(order);
+                order.DocNo = dao.UpdateDocNo("OR", id);
                 var cart = (List<CartItem>)Session[CartSession];
                 var detailDao = new OrderDetailDao();
                 decimal total = 0;
