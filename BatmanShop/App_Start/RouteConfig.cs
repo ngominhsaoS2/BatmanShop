@@ -111,7 +111,7 @@ namespace BatmanShop
                 name: "Contact",
                 url: "Contact",
                 defaults: new { controller = "Contact", action = "Index", id = UrlParameter.Optional },
-                namespaces: new[] { "OnlineShop.Controllers" }
+                namespaces: new[] { "BatmanShop.Controllers" }
             );
 
             routes.MapRoute(
